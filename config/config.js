@@ -45,7 +45,6 @@ module.exports = {
             host: 'localhost',
             port: 6379,
         },
-        name: 'mymaster'
     },
     socketio: {
         active: true,
