@@ -1,0 +1,1055 @@
+2024-06-04 10:01:21.944 - INFO: [index.js:91:12] service loader called.
+2024-06-04 10:01:21.952 - INFO: [index.js:95:12] controller loader called.
+2024-06-04 10:01:21.952 - DEBUG: [external_loader.js:33:9] external_loader called.
+2024-06-04 10:01:21.953 - DEBUG: [external_loader.js:36:16] No external configuration.
+2024-06-04 10:01:22.086 - INFO: [index.js:200:20] Http Server started.
+2024-06-04 10:01:22.087 - INFO: [index.js:211:16] Base URL -> http://localhost:8001
+2024-06-04 10:01:22.087 - INFO: [index.js:216:16] Namespace -> ::_8001_11168
+2024-06-04 10:01:22.089 - DEBUG: [database_mysql.js:61:16] database SQL file loaded.
+2024-06-04 13:08:20.455 - DEBUG: [tiger-controller.js:20:16] Tiger:hello called for path /tiger/hello
+2024-06-04 13:08:20.457 - DEBUG: [param.js:19:12] GET /tiger/hello requested
+2024-06-04 13:08:20.458 - DEBUG: [param.js:36:16] PARAMS -> {}
+2024-06-04 13:08:41.514 - DEBUG: [tiger-controller.js:20:16] Tiger:hello called for path /tiger/hello
+2024-06-04 13:08:41.515 - DEBUG: [param.js:19:12] GET /tiger/hello requested
+2024-06-04 13:08:41.515 - DEBUG: [param.js:36:16] PARAMS -> {}
+2024-06-04 13:08:58.289 - DEBUG: [dog-controller.js:41:16] Dog:list called for path /dog/list
+2024-06-04 13:08:58.290 - DEBUG: [param.js:19:12] GET /dog/list requested
+2024-06-04 13:08:58.290 - DEBUG: [param.js:36:16] PARAMS -> {}
+2024-06-04 13:11:15.873 - DEBUG: [cat-controller.js:60:16] Cat:read called for GET /cat/:id
+2024-06-04 13:11:15.873 - DEBUG: [param.js:19:12] GET /cat/list requested
+2024-06-04 13:11:15.874 - DEBUG: [param.js:36:16] PARAMS -> {"id":"list"}
+2024-06-04 13:12:35.487 - DEBUG: [param.js:19:12] GET /profile/get requested
+2024-06-04 13:12:35.488 - DEBUG: [param.js:36:16] PARAMS -> {}
+2024-06-04 13:12:35.519 - DEBUG: [database_mysql.js:393:28] SQL -> select                 id,                 name,                 age,                 mobile             from test.person             where name like NULL
+2024-06-04 13:12:35.519 - DEBUG: [database_mysql.js:399:28] Error in executing SQL -> Error: ER_NO_SUCH_TABLE: Table 'test.person' doesn't exist
+2024-06-04 13:12:35.519 - ERROR: [profile-controller.js:54:12] executeSql error -> Error: ER_NO_SUCH_TABLE: Table 'test.person' doesn't exist
+2024-06-04 13:14:36.012 - DEBUG: [param.js:19:12] GET /profile/get requested
+2024-06-04 13:14:36.012 - DEBUG: [param.js:36:16] PARAMS -> {}
+2024-06-04 13:14:36.015 - DEBUG: [database_mysql.js:393:28] SQL -> select                 id,                 name,                 age,                 mobile             from test.person             where name like NULL
+2024-06-04 13:14:36.015 - DEBUG: [database_mysql.js:399:28] Error in executing SQL -> Error: ER_BAD_FIELD_ERROR: Unknown column 'id' in 'field list'
+2024-06-04 13:14:36.015 - ERROR: [profile-controller.js:54:12] executeSql error -> Error: ER_BAD_FIELD_ERROR: Unknown column 'id' in 'field list'
+2024-06-04 13:14:51.686 - DEBUG: [param.js:19:12] GET /profile/get requested
+2024-06-04 13:14:51.686 - DEBUG: [param.js:36:16] PARAMS -> {}
+2024-06-04 13:14:51.687 - DEBUG: [database_mysql.js:393:28] SQL -> select                 id,                 name,                 age,                 mobile             from test.person             where name like NULL
+2024-06-04 13:14:51.687 - DEBUG: [database_mysql.js:399:28] Error in executing SQL -> Error: ER_BAD_FIELD_ERROR: Unknown column 'id' in 'field list'
+2024-06-04 13:14:51.687 - ERROR: [profile-controller.js:54:12] executeSql error -> Error: ER_BAD_FIELD_ERROR: Unknown column 'id' in 'field list'
+2024-06-04 13:15:00.094 - DEBUG: [param.js:19:12] GET /profile/get requested
+2024-06-04 13:15:00.094 - DEBUG: [param.js:36:16] PARAMS -> {}
+2024-06-04 13:15:00.096 - DEBUG: [database_mysql.js:393:28] SQL -> select                 id,                 name,                 age,                 mobile             from test.person             where name like NULL
+2024-06-04 13:15:00.096 - DEBUG: [database_mysql.js:399:28] Error in executing SQL -> Error: ER_BAD_FIELD_ERROR: Unknown column 'age' in 'field list'
+2024-06-04 13:15:00.096 - ERROR: [profile-controller.js:54:12] executeSql error -> Error: ER_BAD_FIELD_ERROR: Unknown column 'age' in 'field list'
+2024-06-04 13:15:17.954 - DEBUG: [param.js:19:12] GET /profile/get requested
+2024-06-04 13:15:17.954 - DEBUG: [param.js:36:16] PARAMS -> {}
+2024-06-04 13:15:17.957 - DEBUG: [database_mysql.js:393:28] SQL -> select                 id,                 name,                 age,                 mobile             from test.person             where name like NULL
+2024-06-04 13:15:17.957 - DEBUG: [database_mysql.js:399:28] Error in executing SQL -> Error: ER_BAD_FIELD_ERROR: Unknown column 'mobile' in 'field list'
+2024-06-04 13:15:17.957 - ERROR: [profile-controller.js:54:12] executeSql error -> Error: ER_BAD_FIELD_ERROR: Unknown column 'mobile' in 'field list'
+2024-06-04 13:15:43.622 - DEBUG: [param.js:19:12] GET /profile/get requested
+2024-06-04 13:15:43.622 - DEBUG: [param.js:36:16] PARAMS -> {}
+2024-06-04 13:15:43.626 - DEBUG: [database_mysql.js:393:28] SQL -> select                 id,                 name,                 age,                 mobile             from test.person             where name like NULL
+2024-06-04 13:16:17.175 - DEBUG: [param.js:19:12] GET /profile/get requested
+2024-06-04 13:16:17.175 - DEBUG: [param.js:36:16] PARAMS -> {"name":"Tom"}
+2024-06-04 13:16:17.177 - DEBUG: [database_mysql.js:393:28] SQL -> select                 id,                 name,                 age,                 mobile             from test.person             where name like 'Tom'
+2024-06-04 13:24:38.498 - DEBUG: [param.js:19:12] GET /bear/1 requested
+2024-06-04 13:24:38.498 - DEBUG: [param.js:36:16] PARAMS -> {"id":"1"}
+2024-06-04 13:24:38.516 - DEBUG: [database_mysql.js:393:28] SQL -> select id,name,age,mobile             from test.person  where id = 1 
+2024-06-04 13:25:35.995 - DEBUG: [param.js:19:12] GET /bear requested
+2024-06-04 13:25:35.995 - DEBUG: [param.js:36:16] PARAMS -> {}
+2024-06-04 13:25:35.998 - DEBUG: [database_mysql.js:393:28] SQL -> select count(*) as total                 from test.person
+2024-06-04 13:25:36.010 - DEBUG: [database_mysql.js:393:28] SQL -> select id,name,age,mobile               from test.person
+2024-06-04 13:26:00.295 - DEBUG: [param.js:19:12] GET /bear/1 requested
+2024-06-04 13:26:00.295 - DEBUG: [param.js:36:16] PARAMS -> {"id":"1"}
+2024-06-04 13:26:00.316 - DEBUG: [database_mysql.js:393:28] SQL -> select id,name,age,mobile             from test.person  where id = 1 
+2024-06-04 13:27:18.557 - DEBUG: [param.js:19:12] POST /bear requested
+2024-06-04 13:27:18.558 - DEBUG: [param.js:36:16] PARAMS -> {"name":"John","age":"20","mobile":"01010001000"}
+2024-06-04 13:27:18.568 - DEBUG: [table-controller.js:262:20] column found -> name
+2024-06-04 13:27:18.569 - DEBUG: [table-controller.js:269:20] column type -> text
+2024-06-04 13:27:18.569 - DEBUG: [table-controller.js:262:20] column found -> age
+2024-06-04 13:27:18.569 - DEBUG: [table-controller.js:269:20] column type -> int(11)
+2024-06-04 13:27:18.569 - DEBUG: [table-controller.js:262:20] column found -> mobile
+2024-06-04 13:27:18.569 - DEBUG: [table-controller.js:269:20] column type -> text
+2024-06-04 13:27:18.570 - DEBUG: [table-controller.js:281:16] columnNames -> name,age,mobile
+2024-06-04 13:27:18.570 - DEBUG: [table-controller.js:282:16] columnValues -> 'John',20,'01010001000'
+2024-06-04 13:27:18.571 - DEBUG: [database_mysql.js:393:28] SQL -> insert into test.person                     (name,age,mobile)               values ('John',20,'01010001000')
+2024-06-04 13:29:31.829 - DEBUG: [param.js:19:12] PUT /bear/1 requested
+2024-06-04 13:29:31.830 - DEBUG: [param.js:36:16] PARAMS -> {"id":"1","name":"John","age":"21","mobile":"01010001000"}
+2024-06-04 13:29:31.855 - DEBUG: [table-controller.js:553:20] column found -> id
+2024-06-04 13:29:31.856 - DEBUG: [table-controller.js:559:20] column type -> int(11)
+2024-06-04 13:29:31.856 - DEBUG: [table-controller.js:553:20] column found -> name
+2024-06-04 13:29:31.856 - DEBUG: [table-controller.js:559:20] column type -> text
+2024-06-04 13:29:31.856 - DEBUG: [table-controller.js:553:20] column found -> age
+2024-06-04 13:29:31.857 - DEBUG: [table-controller.js:559:20] column type -> int(11)
+2024-06-04 13:29:31.857 - DEBUG: [table-controller.js:553:20] column found -> mobile
+2024-06-04 13:29:31.857 - DEBUG: [table-controller.js:559:20] column type -> text
+2024-06-04 13:29:31.858 - DEBUG: [table-controller.js:581:18] id type -> int(11)
+2024-06-04 13:29:31.859 - DEBUG: [database_mysql.js:393:28] SQL -> update test.person               set id=1,name='John',age=21,mobile='01010001000'  where id = 1 
+2024-06-04 13:30:07.088 - DEBUG: [param.js:19:12] PUT /bear/1 requested
+2024-06-04 13:30:07.088 - DEBUG: [param.js:36:16] PARAMS -> {"id":"1","name":"Tim","age":"23","mobile":"01020002000"}
+2024-06-04 13:30:07.114 - DEBUG: [table-controller.js:553:20] column found -> id
+2024-06-04 13:30:07.115 - DEBUG: [table-controller.js:559:20] column type -> int(11)
+2024-06-04 13:30:07.115 - DEBUG: [table-controller.js:553:20] column found -> name
+2024-06-04 13:30:07.115 - DEBUG: [table-controller.js:559:20] column type -> text
+2024-06-04 13:30:07.115 - DEBUG: [table-controller.js:553:20] column found -> age
+2024-06-04 13:30:07.116 - DEBUG: [table-controller.js:559:20] column type -> int(11)
+2024-06-04 13:30:07.116 - DEBUG: [table-controller.js:553:20] column found -> mobile
+2024-06-04 13:30:07.116 - DEBUG: [table-controller.js:559:20] column type -> text
+2024-06-04 13:30:07.116 - DEBUG: [table-controller.js:581:18] id type -> int(11)
+2024-06-04 13:30:07.118 - DEBUG: [database_mysql.js:393:28] SQL -> update test.person               set id=1,name='Tim',age=23,mobile='01020002000'  where id = 1 
+2024-06-04 13:30:23.235 - DEBUG: [param.js:19:12] PUT /bear/4 requested
+2024-06-04 13:30:23.236 - DEBUG: [param.js:36:16] PARAMS -> {"id":"4","name":"Tim","age":"23","mobile":"01020002000"}
+2024-06-04 13:30:23.254 - DEBUG: [table-controller.js:553:20] column found -> id
+2024-06-04 13:30:23.254 - DEBUG: [table-controller.js:559:20] column type -> int(11)
+2024-06-04 13:30:23.255 - DEBUG: [table-controller.js:553:20] column found -> name
+2024-06-04 13:30:23.255 - DEBUG: [table-controller.js:559:20] column type -> text
+2024-06-04 13:30:23.255 - DEBUG: [table-controller.js:553:20] column found -> age
+2024-06-04 13:30:23.256 - DEBUG: [table-controller.js:559:20] column type -> int(11)
+2024-06-04 13:30:23.256 - DEBUG: [table-controller.js:553:20] column found -> mobile
+2024-06-04 13:30:23.256 - DEBUG: [table-controller.js:559:20] column type -> text
+2024-06-04 13:30:23.257 - DEBUG: [table-controller.js:581:18] id type -> int(11)
+2024-06-04 13:30:23.257 - DEBUG: [database_mysql.js:393:28] SQL -> update test.person               set id=4,name='Tim',age=23,mobile='01020002000'  where id = 4 
+2024-06-04 13:30:43.867 - DEBUG: [param.js:19:12] POST /bear requested
+2024-06-04 13:30:43.868 - DEBUG: [param.js:36:16] PARAMS -> {"name":"John2","age":"20","mobile":"01010001000"}
+2024-06-04 13:30:43.887 - DEBUG: [table-controller.js:262:20] column found -> name
+2024-06-04 13:30:43.888 - DEBUG: [table-controller.js:269:20] column type -> text
+2024-06-04 13:30:43.888 - DEBUG: [table-controller.js:262:20] column found -> age
+2024-06-04 13:30:43.888 - DEBUG: [table-controller.js:269:20] column type -> int(11)
+2024-06-04 13:30:43.888 - DEBUG: [table-controller.js:262:20] column found -> mobile
+2024-06-04 13:30:43.889 - DEBUG: [table-controller.js:269:20] column type -> text
+2024-06-04 13:30:43.889 - DEBUG: [table-controller.js:281:16] columnNames -> name,age,mobile
+2024-06-04 13:30:43.889 - DEBUG: [table-controller.js:282:16] columnValues -> 'John2',20,'01010001000'
+2024-06-04 13:30:43.890 - DEBUG: [database_mysql.js:393:28] SQL -> insert into test.person                     (name,age,mobile)               values ('John2',20,'01010001000')
+2024-06-04 13:31:22.051 - DEBUG: [param.js:19:12] DELETE /bear/4 requested
+2024-06-04 13:31:22.051 - DEBUG: [param.js:36:16] PARAMS -> {"id":"4"}
+2024-06-04 13:31:22.071 - DEBUG: [table-controller.js:720:20] column found -> id
+2024-06-04 13:31:22.071 - DEBUG: [table-controller.js:726:20] column type -> int(11)
+2024-06-04 13:31:22.071 - DEBUG: [table-controller.js:748:18] id type -> int(11)
+2024-06-04 13:31:22.073 - DEBUG: [database_mysql.js:393:28] SQL -> delete from test.person  where id = 4 
+2024-06-04 13:40:53.956 - DEBUG: [param.js:19:12] GET /bear/1 requested
+2024-06-04 13:40:53.956 - DEBUG: [param.js:36:16] PARAMS -> {"id":"1"}
+2024-06-04 13:40:53.971 - DEBUG: [database_mysql.js:393:28] SQL -> select id,name,age,mobile             from test.person  where id = 1 
+2024-06-04 13:40:56.957 - DEBUG: [param.js:19:12] GET /bear requested
+2024-06-04 13:40:56.958 - DEBUG: [param.js:36:16] PARAMS -> {}
+2024-06-04 13:40:56.960 - DEBUG: [database_mysql.js:393:28] SQL -> select count(*) as total                 from test.person
+2024-06-04 13:40:56.984 - DEBUG: [database_mysql.js:393:28] SQL -> select id,name,age,mobile               from test.person
+2024-06-04 13:41:05.754 - DEBUG: [param.js:19:12] GET /profile/get requested
+2024-06-04 13:41:05.755 - DEBUG: [param.js:36:16] PARAMS -> {"name":"Tom"}
+2024-06-04 13:41:05.756 - DEBUG: [database_mysql.js:393:28] SQL -> select                 id,                 name,                 age,                 mobile             from test.person             where name like 'Tom'
+2024-06-04 13:41:11.651 - DEBUG: [param.js:19:12] GET /profile/get requested
+2024-06-04 13:41:11.651 - DEBUG: [param.js:36:16] PARAMS -> {}
+2024-06-04 13:41:11.652 - DEBUG: [database_mysql.js:393:28] SQL -> select                 id,                 name,                 age,                 mobile             from test.person             where name like NULL
+2024-06-04 13:41:14.607 - DEBUG: [param.js:19:12] GET /profile/get requested
+2024-06-04 13:41:14.607 - DEBUG: [param.js:36:16] PARAMS -> {"name":"Tom"}
+2024-06-04 13:41:14.608 - DEBUG: [database_mysql.js:393:28] SQL -> select                 id,                 name,                 age,                 mobile             from test.person             where name like 'Tom'
+2024-06-04 13:41:21.806 - DEBUG: [param.js:19:12] GET /profile/get requested
+2024-06-04 13:41:21.806 - DEBUG: [param.js:36:16] PARAMS -> {"id":"2"}
+2024-06-04 13:41:21.808 - DEBUG: [database_mysql.js:393:28] SQL -> select                 id,                 name,                 age,                 mobile             from test.person             where name like NULL
+2024-06-04 13:41:28.071 - DEBUG: [param.js:19:12] GET /profile/get requested
+2024-06-04 13:41:28.072 - DEBUG: [param.js:36:16] PARAMS -> {"name":"Tom"}
+2024-06-04 13:41:28.073 - DEBUG: [database_mysql.js:393:28] SQL -> select                 id,                 name,                 age,                 mobile             from test.person             where name like 'Tom'
+2024-06-04 13:41:32.784 - DEBUG: [tiger-controller.js:20:16] Tiger:hello called for path /tiger/hello
+2024-06-04 13:41:32.785 - DEBUG: [param.js:19:12] GET /tiger/hello requested
+2024-06-04 13:41:32.785 - DEBUG: [param.js:36:16] PARAMS -> {}
+2024-06-04 13:43:19.353 - DEBUG: [sheep-controller.js:74:16] Sheep:read called for path /sheep/:id
+2024-06-04 13:43:19.353 - DEBUG: [param.js:19:12] GET /sheep/list requested
+2024-06-04 13:43:19.353 - DEBUG: [param.js:36:16] PARAMS -> {"id":"list"}
+2024-06-04 13:43:19.353 - DEBUG: [param.js:19:12] GET /sheep/list requested
+2024-06-04 13:43:19.354 - DEBUG: [param.js:36:16] PARAMS -> {"id":"list"}
+2024-06-04 13:43:19.363 - DEBUG: [database_mysql.js:393:28] SQL -> select id,name,age,mobile             from test.person  where id = list 
+2024-06-04 13:43:19.363 - DEBUG: [database_mysql.js:399:28] Error in executing SQL -> Error: ER_BAD_FIELD_ERROR: Unknown column 'list' in 'where clause'
+2024-06-04 13:43:30.153 - DEBUG: [sheep-controller.js:36:16] Sheep:list called for path /sheep/
+2024-06-04 13:43:30.154 - DEBUG: [param.js:19:12] GET /sheep requested
+2024-06-04 13:43:30.154 - DEBUG: [param.js:36:16] PARAMS -> {}
+2024-06-04 13:43:30.155 - DEBUG: [param.js:19:12] GET /sheep requested
+2024-06-04 13:43:30.155 - DEBUG: [param.js:36:16] PARAMS -> {}
+2024-06-04 13:43:30.156 - DEBUG: [database_mysql.js:393:28] SQL -> select count(*) as total                 from test.person
+2024-06-04 13:43:30.170 - DEBUG: [database_mysql.js:393:28] SQL -> select id,name,age,mobile               from test.person
+2024-06-04 13:43:44.243 - DEBUG: [sheep-controller.js:36:16] Sheep:list called for path /sheep/
+2024-06-04 13:43:44.243 - DEBUG: [param.js:19:12] GET /sheep requested
+2024-06-04 13:43:44.244 - DEBUG: [param.js:36:16] PARAMS -> {}
+2024-06-04 13:43:44.244 - DEBUG: [param.js:19:12] GET /sheep requested
+2024-06-04 13:43:44.245 - DEBUG: [param.js:36:16] PARAMS -> {}
+2024-06-04 13:43:44.246 - DEBUG: [database_mysql.js:393:28] SQL -> select count(*) as total                 from test.person
+2024-06-04 13:43:44.259 - DEBUG: [database_mysql.js:393:28] SQL -> select id,name,age,mobile               from test.person
+2024-06-04 13:44:02.099 - DEBUG: [param.js:19:12] GET /bear/1 requested
+2024-06-04 13:44:02.099 - DEBUG: [param.js:36:16] PARAMS -> {"id":"1"}
+2024-06-04 13:44:02.120 - DEBUG: [database_mysql.js:393:28] SQL -> select id,name,age,mobile             from test.person  where id = 1 
+2024-06-04 13:44:59.738 - DEBUG: [sheep-controller.js:55:16] Sheep:create called for path /sheep/
+2024-06-04 13:44:59.738 - DEBUG: [param.js:19:12] POST /sheep requested
+2024-06-04 13:44:59.750 - DEBUG: [param.js:36:16] PARAMS -> {"name":"John2","age":"20","mobile":"01010001000"}
+2024-06-04 13:44:59.751 - DEBUG: [param.js:19:12] POST /sheep requested
+2024-06-04 13:44:59.751 - DEBUG: [param.js:36:16] PARAMS -> {"name":"John2","age":"20","mobile":"01010001000"}
+2024-06-04 13:44:59.758 - DEBUG: [table-controller.js:335:20] column found -> name
+2024-06-04 13:44:59.759 - DEBUG: [table-controller.js:342:20] column type -> text
+2024-06-04 13:44:59.759 - DEBUG: [table-controller.js:335:20] column found -> age
+2024-06-04 13:44:59.759 - DEBUG: [table-controller.js:342:20] column type -> int(11)
+2024-06-04 13:44:59.759 - DEBUG: [table-controller.js:335:20] column found -> mobile
+2024-06-04 13:44:59.759 - DEBUG: [table-controller.js:342:20] column type -> text
+2024-06-04 13:44:59.759 - DEBUG: [table-controller.js:354:16] columnNames -> name,age,mobile
+2024-06-04 13:44:59.759 - DEBUG: [table-controller.js:355:16] columnValues -> 'John2',20,'01010001000'
+2024-06-04 13:44:59.761 - DEBUG: [database_mysql.js:393:28] SQL -> insert into test.person                     (name,age,mobile)               values ('John2',20,'01010001000')
+2024-06-04 13:45:25.270 - DEBUG: [sheep-controller.js:74:16] Sheep:read called for path /sheep/:id
+2024-06-04 13:45:25.270 - DEBUG: [param.js:19:12] GET /sheep/1 requested
+2024-06-04 13:45:25.271 - DEBUG: [param.js:36:16] PARAMS -> {"id":"1"}
+2024-06-04 13:45:25.271 - DEBUG: [param.js:19:12] GET /sheep/1 requested
+2024-06-04 13:45:25.271 - DEBUG: [param.js:36:16] PARAMS -> {"id":"1"}
+2024-06-04 13:45:25.293 - DEBUG: [database_mysql.js:393:28] SQL -> select id,name,age,mobile             from test.person  where id = 1 
+2024-06-04 13:46:59.652 - DEBUG: [sheep-controller.js:93:16] Sheep:update called for path /sheep/:id
+2024-06-04 13:46:59.652 - DEBUG: [param.js:19:12] PUT /sheep/4 requested
+2024-06-04 13:46:59.652 - DEBUG: [param.js:36:16] PARAMS -> {"id":"4","name":"Tim","age":"23","mobile":"01020002000"}
+2024-06-04 13:46:59.653 - DEBUG: [param.js:19:12] PUT /sheep/4 requested
+2024-06-04 13:46:59.653 - DEBUG: [param.js:36:16] PARAMS -> {"id":"4","name":"Tim","age":"23","mobile":"01020002000"}
+2024-06-04 13:46:59.662 - DEBUG: [table-controller.js:640:20] column found -> id
+2024-06-04 13:46:59.662 - DEBUG: [table-controller.js:646:20] column type -> int(11)
+2024-06-04 13:46:59.663 - DEBUG: [table-controller.js:640:20] column found -> name
+2024-06-04 13:46:59.663 - DEBUG: [table-controller.js:646:20] column type -> text
+2024-06-04 13:46:59.663 - DEBUG: [table-controller.js:640:20] column found -> age
+2024-06-04 13:46:59.663 - DEBUG: [table-controller.js:646:20] column type -> int(11)
+2024-06-04 13:46:59.663 - DEBUG: [table-controller.js:640:20] column found -> mobile
+2024-06-04 13:46:59.663 - DEBUG: [table-controller.js:646:20] column type -> text
+2024-06-04 13:46:59.663 - DEBUG: [table-controller.js:667:18] id type -> int(11)
+2024-06-04 13:46:59.664 - DEBUG: [database_mysql.js:393:28] SQL -> update test.person               set id=4,name='Tim',age=23,mobile='01020002000'  where id = 4 
+2024-06-04 13:47:56.699 - DEBUG: [sheep-controller.js:112:16] Sheep:delete called for path /sheep/:id
+2024-06-04 13:47:56.699 - DEBUG: [param.js:19:12] DELETE /sheep/4 requested
+2024-06-04 13:47:56.700 - DEBUG: [param.js:36:16] PARAMS -> {"id":"4"}
+2024-06-04 13:47:56.711 - DEBUG: [param.js:19:12] DELETE /sheep/4 requested
+2024-06-04 13:47:56.711 - DEBUG: [param.js:36:16] PARAMS -> {"id":"4"}
+2024-06-04 13:47:56.719 - DEBUG: [table-controller.js:807:20] column found -> id
+2024-06-04 13:47:56.720 - DEBUG: [table-controller.js:813:20] column type -> int(11)
+2024-06-04 13:47:56.720 - DEBUG: [table-controller.js:835:18] id type -> int(11)
+2024-06-04 13:47:56.721 - DEBUG: [database_mysql.js:393:28] SQL -> delete from test.person  where id = 4 
+2024-06-04 13:48:04.401 - DEBUG: [sheep-controller.js:112:16] Sheep:delete called for path /sheep/:id
+2024-06-04 13:48:04.401 - DEBUG: [param.js:19:12] DELETE /sheep/4 requested
+2024-06-04 13:48:04.401 - DEBUG: [param.js:36:16] PARAMS -> {"id":"4"}
+2024-06-04 13:48:04.402 - DEBUG: [param.js:19:12] DELETE /sheep/4 requested
+2024-06-04 13:48:04.402 - DEBUG: [param.js:36:16] PARAMS -> {"id":"4"}
+2024-06-04 13:48:04.422 - DEBUG: [table-controller.js:807:20] column found -> id
+2024-06-04 13:48:04.422 - DEBUG: [table-controller.js:813:20] column type -> int(11)
+2024-06-04 13:48:04.423 - DEBUG: [table-controller.js:835:18] id type -> int(11)
+2024-06-04 13:48:04.423 - DEBUG: [database_mysql.js:393:28] SQL -> delete from test.person  where id = 4 
+2024-06-04 13:48:28.972 - DEBUG: [sheep-controller.js:93:16] Sheep:update called for path /sheep/:id
+2024-06-04 13:48:28.972 - DEBUG: [param.js:19:12] PUT /sheep/5 requested
+2024-06-04 13:48:28.973 - DEBUG: [param.js:36:16] PARAMS -> {"id":"5","name":"Tim","age":"23","mobile":"01020002000"}
+2024-06-04 13:48:28.973 - DEBUG: [param.js:19:12] PUT /sheep/5 requested
+2024-06-04 13:48:28.974 - DEBUG: [param.js:36:16] PARAMS -> {"id":"5","name":"Tim","age":"23","mobile":"01020002000"}
+2024-06-04 13:48:28.992 - DEBUG: [table-controller.js:640:20] column found -> id
+2024-06-04 13:48:28.993 - DEBUG: [table-controller.js:646:20] column type -> int(11)
+2024-06-04 13:48:28.993 - DEBUG: [table-controller.js:640:20] column found -> name
+2024-06-04 13:48:28.993 - DEBUG: [table-controller.js:646:20] column type -> text
+2024-06-04 13:48:28.993 - DEBUG: [table-controller.js:640:20] column found -> age
+2024-06-04 13:48:28.993 - DEBUG: [table-controller.js:646:20] column type -> int(11)
+2024-06-04 13:48:28.994 - DEBUG: [table-controller.js:640:20] column found -> mobile
+2024-06-04 13:48:28.994 - DEBUG: [table-controller.js:646:20] column type -> text
+2024-06-04 13:48:28.994 - DEBUG: [table-controller.js:667:18] id type -> int(11)
+2024-06-04 13:48:28.995 - DEBUG: [database_mysql.js:393:28] SQL -> update test.person               set id=5,name='Tim',age=23,mobile='01020002000'  where id = 5 
+2024-06-04 13:48:41.046 - DEBUG: [sheep-controller.js:112:16] Sheep:delete called for path /sheep/:id
+2024-06-04 13:48:41.046 - DEBUG: [param.js:19:12] DELETE /sheep/4 requested
+2024-06-04 13:48:41.047 - DEBUG: [param.js:36:16] PARAMS -> {"id":"4"}
+2024-06-04 13:48:41.047 - DEBUG: [param.js:19:12] DELETE /sheep/4 requested
+2024-06-04 13:48:41.047 - DEBUG: [param.js:36:16] PARAMS -> {"id":"4"}
+2024-06-04 13:48:41.055 - DEBUG: [table-controller.js:807:20] column found -> id
+2024-06-04 13:48:41.055 - DEBUG: [table-controller.js:813:20] column type -> int(11)
+2024-06-04 13:48:41.055 - DEBUG: [table-controller.js:835:18] id type -> int(11)
+2024-06-04 13:48:41.057 - DEBUG: [database_mysql.js:393:28] SQL -> delete from test.person  where id = 4 
+2024-06-04 13:51:15.526 - DEBUG: [param.js:19:12] GET /bear requested
+2024-06-04 13:51:15.526 - DEBUG: [param.js:36:16] PARAMS -> {"page":"1","perPage":"10","search":"name","searchValue":"john","order":"name","orderDirection":"asc"}
+2024-06-04 13:51:15.528 - DEBUG: [database_mysql.js:393:28] SQL -> select count(*) as total                 from test.person  where name like '%john%' 
+2024-06-04 13:51:15.537 - DEBUG: [database_mysql.js:393:28] SQL -> select id,name,age,mobile               from test.person  where name like '%john%'   order by name asc   limit 0, 10 
+2024-06-04 13:52:03.633 - DEBUG: [sheep-controller.js:36:16] Sheep:list called for path /sheep/
+2024-06-04 13:52:03.633 - DEBUG: [param.js:19:12] GET /sheep requested
+2024-06-04 13:52:03.634 - DEBUG: [param.js:36:16] PARAMS -> {"page":"1","perPage":"10","search":"name","searchValue":"john","order":"name","orderDirection":"asc"}
+2024-06-04 13:52:03.634 - DEBUG: [param.js:19:12] GET /sheep requested
+2024-06-04 13:52:03.634 - DEBUG: [param.js:36:16] PARAMS -> {"page":"1","perPage":"10","search":"name","searchValue":"john","order":"name","orderDirection":"asc"}
+2024-06-04 13:52:03.635 - DEBUG: [database_mysql.js:393:28] SQL -> select count(*) as total                 from test.person  where name like '%john%' 
+2024-06-04 13:52:03.655 - DEBUG: [database_mysql.js:393:28] SQL -> select id,name,age,mobile               from test.person  where name like '%john%'   order by name asc   limit 0, 10 
+2024-06-04 13:53:29.537 - DEBUG: [cat-controller.js:30:16] Cat:list called for GET /cat
+2024-06-04 13:53:29.537 - DEBUG: [param.js:19:12] GET /cat requested
+2024-06-04 13:53:29.538 - DEBUG: [param.js:36:16] PARAMS -> {}
+2024-06-04 13:53:36.031 - DEBUG: [cat-controller.js:30:16] Cat:list called for GET /cat
+2024-06-04 13:53:36.031 - DEBUG: [param.js:19:12] GET /cat requested
+2024-06-04 13:53:36.032 - DEBUG: [param.js:36:16] PARAMS -> {}
+2024-06-04 13:54:21.755 - DEBUG: [cat-controller.js:30:16] Cat:list called for GET /cat
+2024-06-04 13:54:21.755 - DEBUG: [param.js:19:12] GET /cat requested
+2024-06-04 13:54:21.756 - DEBUG: [param.js:36:16] PARAMS -> {}
+2024-06-04 13:54:29.952 - DEBUG: [cat-controller.js:30:16] Cat:list called for GET /cat
+2024-06-04 13:54:29.952 - DEBUG: [param.js:19:12] GET /cat requested
+2024-06-04 13:54:29.953 - DEBUG: [param.js:36:16] PARAMS -> {"page":"1","perPage":"10","search":"name","searchValue":"john","order":"name","orderDirection":"asc"}
+2024-06-04 13:54:42.074 - DEBUG: [cat-controller.js:60:16] Cat:read called for GET /cat/:id
+2024-06-04 13:54:42.074 - DEBUG: [param.js:19:12] GET /cat/1 requested
+2024-06-04 13:54:42.074 - DEBUG: [param.js:36:16] PARAMS -> {"id":"1"}
+2024-06-04 13:54:46.888 - DEBUG: [cat-controller.js:60:16] Cat:read called for GET /cat/:id
+2024-06-04 13:54:46.888 - DEBUG: [param.js:19:12] GET /cat/2 requested
+2024-06-04 13:54:46.889 - DEBUG: [param.js:36:16] PARAMS -> {"id":"2"}
+2024-06-04 13:54:50.262 - DEBUG: [cat-controller.js:60:16] Cat:read called for GET /cat/:id
+2024-06-04 13:54:50.263 - DEBUG: [param.js:19:12] GET /cat/0 requested
+2024-06-04 13:54:50.263 - DEBUG: [param.js:36:16] PARAMS -> {"id":"0"}
+2024-06-04 13:54:59.704 - DEBUG: [cat-controller.js:30:16] Cat:list called for GET /cat
+2024-06-04 13:54:59.705 - DEBUG: [param.js:19:12] GET /cat requested
+2024-06-04 13:54:59.705 - DEBUG: [param.js:36:16] PARAMS -> {"231":""}
+2024-06-04 13:55:05.681 - DEBUG: [cat-controller.js:30:16] Cat:list called for GET /cat
+2024-06-04 13:55:05.681 - DEBUG: [param.js:19:12] GET /cat requested
+2024-06-04 13:55:05.681 - DEBUG: [param.js:36:16] PARAMS -> {}
+2024-06-04 13:55:14.583 - DEBUG: [cat-controller.js:60:16] Cat:read called for GET /cat/:id
+2024-06-04 13:55:14.583 - DEBUG: [param.js:19:12] GET /cat/1 requested
+2024-06-04 13:55:14.584 - DEBUG: [param.js:36:16] PARAMS -> {"id":"1"}
+2024-06-04 13:55:33.601 - DEBUG: [cat-controller.js:30:16] Cat:list called for GET /cat
+2024-06-04 13:55:33.602 - DEBUG: [param.js:19:12] GET /cat requested
+2024-06-04 13:55:33.602 - DEBUG: [param.js:36:16] PARAMS -> {}
+2024-06-04 13:55:41.896 - DEBUG: [cat-controller.js:47:16] Cat:create called for POST /cat
+2024-06-04 13:55:41.896 - DEBUG: [param.js:19:12] POST /cat requested
+2024-06-04 13:55:41.897 - DEBUG: [param.js:36:16] PARAMS -> {"name":"John2","age":"20","mobile":"01010001000"}
+2024-06-04 13:55:48.771 - DEBUG: [cat-controller.js:47:16] Cat:create called for POST /cat
+2024-06-04 13:55:48.771 - DEBUG: [param.js:19:12] POST /cat requested
+2024-06-04 13:55:48.772 - DEBUG: [param.js:36:16] PARAMS -> {"name":"John2","age":"20","mobile":"01010001000"}
+2024-06-04 13:56:17.957 - DEBUG: [cat-controller.js:74:16] Cat:update called for PUT /cat/:id
+2024-06-04 13:56:17.957 - DEBUG: [param.js:19:12] PUT /cat/4 requested
+2024-06-04 13:56:17.958 - DEBUG: [param.js:36:16] PARAMS -> {"id":"4","name":"Tim","age":"23","mobile":"01020002000"}
+2024-06-04 13:56:22.400 - DEBUG: [cat-controller.js:74:16] Cat:update called for PUT /cat/:id
+2024-06-04 13:56:22.400 - DEBUG: [param.js:19:12] PUT /cat/1 requested
+2024-06-04 13:56:22.400 - DEBUG: [param.js:36:16] PARAMS -> {"id":"1","name":"Tim","age":"23","mobile":"01020002000"}
+2024-06-04 13:56:43.735 - DEBUG: [cat-controller.js:88:16] Cat:delete called for DELETE /cat/:id
+2024-06-04 13:56:43.736 - DEBUG: [param.js:19:12] DELETE /cat/4 requested
+2024-06-04 13:56:43.736 - DEBUG: [param.js:36:16] PARAMS -> {"id":"4"}
+2024-06-04 13:56:45.496 - DEBUG: [cat-controller.js:88:16] Cat:delete called for DELETE /cat/:id
+2024-06-04 13:56:45.496 - DEBUG: [param.js:19:12] DELETE /cat/1 requested
+2024-06-04 13:56:45.497 - DEBUG: [param.js:36:16] PARAMS -> {"id":"1"}
+2024-06-04 13:58:38.763 - DEBUG: [index-controller.js:27:16] sheepIndex called for path /sheep.do
+2024-06-04 13:58:52.103 - DEBUG: [index-controller.js:27:16] sheepIndex called for path /sheep.do
+2024-06-04 13:59:05.257 - DEBUG: [index-controller.js:27:16] sheepIndex called for path /sheep.do
+2024-06-04 13:59:18.394 - DEBUG: [index-controller.js:36:16] sheepIndex2 called for path /sheep2.do
+2024-06-04 13:59:28.579 - DEBUG: [index-controller.js:45:16] sheepIndex3 called for path /sheep3.do
+2024-06-04 13:59:32.508 - DEBUG: [index-controller.js:54:16] sheepIndex4 called for path /sheep4.do
+2024-06-04 14:01:08.644 - DEBUG: [panda-controller.js:27:16] Panda:list called for path /panda/list
+2024-06-04 14:01:08.645 - DEBUG: [param.js:19:12] GET /panda/list requested
+2024-06-04 14:01:08.646 - DEBUG: [param.js:36:16] PARAMS -> {}
+2024-06-04 14:03:10.959 - DEBUG: [tiger-controller.js:20:16] Tiger:hello called for path /tiger/hello
+2024-06-04 14:03:10.960 - DEBUG: [param.js:19:12] GET /tiger/hello requested
+2024-06-04 14:03:10.961 - DEBUG: [param.js:36:16] PARAMS -> {}
+2024-06-04 14:03:36.426 - DEBUG: [dog-controller.js:41:16] Dog:list called for path /dog/list
+2024-06-04 14:03:36.427 - DEBUG: [param.js:19:12] GET /dog/list requested
+2024-06-04 14:03:36.428 - DEBUG: [param.js:36:16] PARAMS -> {}
+2024-06-04 14:11:46.765 - INFO: [index.js:90:12] service loader called.
+2024-06-04 14:11:46.776 - INFO: [index.js:94:12] controller loader called.
+2024-06-04 14:11:46.776 - DEBUG: [external_loader.js:33:9] external_loader called.
+2024-06-04 14:11:46.777 - DEBUG: [external_loader.js:36:16] No external configuration.
+2024-06-04 14:11:46.958 - INFO: [index.js:199:20] Http Server started.
+2024-06-04 14:11:46.958 - INFO: [index.js:210:16] Base URL -> http://localhost:8001
+2024-06-04 14:11:46.959 - INFO: [index.js:215:16] Namespace -> ::_8001_3368
+2024-06-04 14:11:46.961 - DEBUG: [database_mysql.js:61:16] database SQL file loaded.
+2024-06-04 14:12:03.165 - DEBUG: [param.js:19:12] GET /profile/get requested
+2024-06-04 14:12:03.166 - DEBUG: [param.js:36:16] PARAMS -> {"name":"Tim"}
+2024-06-04 14:12:03.192 - DEBUG: [database_mysql.js:393:28] SQL -> select                 id,                 name,                 age,                 mobile             from test.person             where name like 'Tim'
+2024-06-04 14:13:36.832 - DEBUG: [param.js:19:12] POST /profile/get requested
+2024-06-04 14:13:36.833 - DEBUG: [param.js:36:16] PARAMS -> {"name":"Tim"}
+2024-06-04 14:13:36.834 - DEBUG: [database_mysql.js:393:28] SQL -> select                 id,                 name,                 age,                 mobile             from test.person             where name like 'Tim'
+2024-06-04 14:14:10.071 - DEBUG: [param.js:19:12] POST /profile/get requested
+2024-06-04 14:14:10.071 - DEBUG: [param.js:36:16] PARAMS -> {"name":"Tim"}
+2024-06-04 14:14:10.073 - DEBUG: [database_mysql.js:393:28] SQL -> select                 id,                 name,                 age,                 mobile             from test.person             where name like 'Tim'
+2024-06-04 14:14:13.858 - DEBUG: [param.js:19:12] POST /profile/get requested
+2024-06-04 14:14:13.858 - DEBUG: [param.js:36:16] PARAMS -> {"name":"Tim"}
+2024-06-04 14:14:13.860 - DEBUG: [database_mysql.js:393:28] SQL -> select                 id,                 name,                 age,                 mobile             from test.person             where name like 'Tim'
+2024-06-04 14:14:15.538 - DEBUG: [param.js:19:12] POST /profile/get requested
+2024-06-04 14:14:15.539 - DEBUG: [param.js:36:16] PARAMS -> {"name":"Tim"}
+2024-06-04 14:14:15.540 - DEBUG: [database_mysql.js:393:28] SQL -> select                 id,                 name,                 age,                 mobile             from test.person             where name like 'Tim'
+2024-06-04 14:14:32.315 - DEBUG: [param.js:19:12] POST /profile/get requested
+2024-06-04 14:14:32.316 - DEBUG: [param.js:36:16] PARAMS -> {"name":"Tim"}
+2024-06-04 14:14:32.317 - DEBUG: [database_mysql.js:393:28] SQL -> select                 id,                 name,                 age,                 mobile             from test.person             where name like 'Tim'
+2024-06-04 14:14:50.463 - DEBUG: [param.js:19:12] GET /profile/add requested
+2024-06-04 14:14:50.464 - DEBUG: [param.js:36:16] PARAMS -> {}
+2024-06-04 14:14:50.466 - DEBUG: [database_mysql.js:393:28] SQL -> insert into test.person                     (name, age, mobile)               values (NULL, NULL, NULL)
+2024-06-04 14:15:29.741 - DEBUG: [param.js:19:12] GET /profile/add requested
+2024-06-04 14:15:29.742 - DEBUG: [param.js:36:16] PARAMS -> {"name":"Jin","age":"29","mobile":"01048485959"}
+2024-06-04 14:15:29.754 - DEBUG: [database_mysql.js:393:28] SQL -> insert into test.person                     (name, age, mobile)               values ('Jin', '29', '01048485959')
+2024-06-04 14:15:40.667 - DEBUG: [param.js:19:12] GET /profile/add requested
+2024-06-04 14:15:40.667 - DEBUG: [param.js:36:16] PARAMS -> {}
+2024-06-04 14:15:40.669 - DEBUG: [database_mysql.js:393:28] SQL -> insert into test.person                     (name, age, mobile)               values (NULL, NULL, NULL)
+2024-06-04 14:16:01.736 - DEBUG: [param.js:19:12] GET /profile/add requested
+2024-06-04 14:16:01.736 - DEBUG: [param.js:36:16] PARAMS -> {}
+2024-06-04 14:16:01.749 - DEBUG: [database_mysql.js:393:28] SQL -> insert into test.person                     (name, age, mobile)               values (NULL, NULL, NULL)
+2024-06-04 14:19:01.660 - DEBUG: [sheep-controller.js:112:16] Sheep:delete called for path /sheep/:id
+2024-06-04 14:19:01.660 - DEBUG: [param.js:19:12] DELETE /sheep/8 requested
+2024-06-04 14:19:01.661 - DEBUG: [param.js:36:16] PARAMS -> {"id":"8"}
+2024-06-04 14:19:01.661 - DEBUG: [param.js:19:12] DELETE /sheep/8 requested
+2024-06-04 14:19:01.662 - DEBUG: [param.js:36:16] PARAMS -> {"id":"8"}
+2024-06-04 14:19:01.687 - DEBUG: [table-controller.js:807:20] column found -> id
+2024-06-04 14:19:01.687 - DEBUG: [table-controller.js:813:20] column type -> int(11)
+2024-06-04 14:19:01.688 - DEBUG: [table-controller.js:835:18] id type -> int(11)
+2024-06-04 14:19:01.689 - DEBUG: [database_mysql.js:393:28] SQL -> delete from test.person  where id = 8 
+2024-06-04 14:19:05.235 - DEBUG: [sheep-controller.js:112:16] Sheep:delete called for path /sheep/:id
+2024-06-04 14:19:05.235 - DEBUG: [param.js:19:12] DELETE /sheep/9 requested
+2024-06-04 14:19:05.236 - DEBUG: [param.js:36:16] PARAMS -> {"id":"9"}
+2024-06-04 14:19:05.236 - DEBUG: [param.js:19:12] DELETE /sheep/9 requested
+2024-06-04 14:19:05.236 - DEBUG: [param.js:36:16] PARAMS -> {"id":"9"}
+2024-06-04 14:19:05.257 - DEBUG: [table-controller.js:807:20] column found -> id
+2024-06-04 14:19:05.259 - DEBUG: [table-controller.js:813:20] column type -> int(11)
+2024-06-04 14:19:05.259 - DEBUG: [table-controller.js:835:18] id type -> int(11)
+2024-06-04 14:19:05.261 - DEBUG: [database_mysql.js:393:28] SQL -> delete from test.person  where id = 9 
+2024-06-04 14:19:08.356 - DEBUG: [sheep-controller.js:112:16] Sheep:delete called for path /sheep/:id
+2024-06-04 14:19:08.357 - DEBUG: [param.js:19:12] DELETE /sheep/6 requested
+2024-06-04 14:19:08.357 - DEBUG: [param.js:36:16] PARAMS -> {"id":"6"}
+2024-06-04 14:19:08.357 - DEBUG: [param.js:19:12] DELETE /sheep/6 requested
+2024-06-04 14:19:08.357 - DEBUG: [param.js:36:16] PARAMS -> {"id":"6"}
+2024-06-04 14:19:08.368 - DEBUG: [table-controller.js:807:20] column found -> id
+2024-06-04 14:19:08.368 - DEBUG: [table-controller.js:813:20] column type -> int(11)
+2024-06-04 14:19:08.369 - DEBUG: [table-controller.js:835:18] id type -> int(11)
+2024-06-04 14:19:08.370 - DEBUG: [database_mysql.js:393:28] SQL -> delete from test.person  where id = 6 
+2024-06-04 14:28:05.330 - DEBUG: [tiger-controller.js:20:16] Tiger:hello called for path /tiger/hello
+2024-06-04 14:28:05.330 - DEBUG: [param.js:19:12] GET /tiger/hello requested
+2024-06-04 14:28:05.331 - DEBUG: [param.js:36:16] PARAMS -> {}
+2024-06-04 14:29:45.496 - INFO: [index.js:90:12] service loader called.
+2024-06-04 14:29:45.504 - INFO: [index.js:94:12] controller loader called.
+2024-06-04 14:29:45.504 - DEBUG: [external_loader.js:33:9] external_loader called.
+2024-06-04 14:29:45.504 - DEBUG: [external_loader.js:36:16] No external configuration.
+2024-06-04 14:29:45.628 - INFO: [index.js:199:20] Http Server started.
+2024-06-04 14:29:45.629 - INFO: [index.js:210:16] Base URL -> http://localhost:8001
+2024-06-04 14:29:45.629 - INFO: [index.js:215:16] Namespace -> ::_8001_11244
+2024-06-04 14:29:45.631 - DEBUG: [database_mysql.js:61:16] database SQL file loaded.
+2024-06-04 14:29:48.081 - DEBUG: [panda-controller.js:28:16] Panda:list called for path /panda/list
+2024-06-04 14:29:48.082 - DEBUG: [param.js:19:12] GET /panda/list requested
+2024-06-04 14:29:48.082 - DEBUG: [param.js:36:16] PARAMS -> {"name":"Tim","age":"17"}
+2024-06-04 14:32:14.727 - INFO: [index.js:90:12] service loader called.
+2024-06-04 14:32:14.735 - INFO: [index.js:94:12] controller loader called.
+2024-06-04 14:32:14.735 - DEBUG: [external_loader.js:33:9] external_loader called.
+2024-06-04 14:32:14.736 - DEBUG: [external_loader.js:36:16] No external configuration.
+2024-06-04 14:32:14.847 - INFO: [index.js:199:20] Http Server started.
+2024-06-04 14:32:14.848 - INFO: [index.js:210:16] Base URL -> http://localhost:8001
+2024-06-04 14:32:14.848 - INFO: [index.js:215:16] Namespace -> ::_8001_13000
+2024-06-04 14:32:14.850 - DEBUG: [database_mysql.js:61:16] database SQL file loaded.
+2024-06-04 14:32:16.966 - DEBUG: [panda-controller.js:29:16] Panda:list called for path /panda/list
+2024-06-04 14:32:16.967 - DEBUG: [param.js:19:12] GET /panda/list requested
+2024-06-04 14:32:16.968 - DEBUG: [param.js:36:16] PARAMS -> {"name":"Tim","age":"17"}
+2024-06-04 14:32:18.950 - DEBUG: [panda-controller.js:29:16] Panda:list called for path /panda/list
+2024-06-04 14:32:18.951 - DEBUG: [param.js:19:12] GET /panda/list requested
+2024-06-04 14:32:18.951 - DEBUG: [param.js:36:16] PARAMS -> {"name":"Tim","age":"17"}
+2024-06-04 14:32:29.030 - INFO: [index.js:90:12] service loader called.
+2024-06-04 14:32:29.037 - INFO: [index.js:94:12] controller loader called.
+2024-06-04 14:32:29.038 - DEBUG: [external_loader.js:33:9] external_loader called.
+2024-06-04 14:32:29.038 - DEBUG: [external_loader.js:36:16] No external configuration.
+2024-06-04 14:32:29.166 - INFO: [index.js:199:20] Http Server started.
+2024-06-04 14:32:29.166 - INFO: [index.js:210:16] Base URL -> http://localhost:8001
+2024-06-04 14:32:29.167 - INFO: [index.js:215:16] Namespace -> ::_8001_18272
+2024-06-04 14:32:29.168 - DEBUG: [database_mysql.js:61:16] database SQL file loaded.
+2024-06-04 14:32:31.763 - DEBUG: [panda-controller.js:28:16] Panda:list called for path /panda/list
+2024-06-04 14:32:31.763 - DEBUG: [param.js:19:12] GET /panda/list requested
+2024-06-04 14:32:31.764 - DEBUG: [param.js:36:16] PARAMS -> {"name":"Tim","age":"17"}
+2024-06-04 14:32:33.947 - DEBUG: [panda-controller.js:28:16] Panda:list called for path /panda/list
+2024-06-04 14:32:33.948 - DEBUG: [param.js:19:12] GET /panda/list requested
+2024-06-04 14:32:33.949 - DEBUG: [param.js:36:16] PARAMS -> {"name":"Tim","age":"17"}
+2024-06-04 14:32:56.940 - INFO: [index.js:90:12] service loader called.
+2024-06-04 14:32:56.948 - INFO: [index.js:94:12] controller loader called.
+2024-06-04 14:32:56.949 - DEBUG: [external_loader.js:33:9] external_loader called.
+2024-06-04 14:32:56.949 - DEBUG: [external_loader.js:36:16] No external configuration.
+2024-06-04 14:32:57.067 - INFO: [index.js:199:20] Http Server started.
+2024-06-04 14:32:57.068 - INFO: [index.js:210:16] Base URL -> http://localhost:8001
+2024-06-04 14:32:57.068 - INFO: [index.js:215:16] Namespace -> ::_8001_11016
+2024-06-04 14:32:57.070 - DEBUG: [database_mysql.js:61:16] database SQL file loaded.
+2024-06-04 14:32:59.181 - DEBUG: [panda-controller.js:29:16] Panda:list called for path /panda/list
+2024-06-04 14:32:59.182 - DEBUG: [param.js:19:12] GET /panda/list requested
+2024-06-04 14:32:59.183 - DEBUG: [param.js:36:16] PARAMS -> {"name":"Tim","age":"17"}
+2024-06-04 14:32:59.214 - DEBUG: [database_mysql.js:393:28] SQL -> select                 id,                 name,                 age             from test.person where name like '%Tim%' and age > 17
+2024-06-04 14:33:02.682 - DEBUG: [panda-controller.js:29:16] Panda:list called for path /panda/list
+2024-06-04 14:33:02.682 - DEBUG: [param.js:19:12] GET /panda/list requested
+2024-06-04 14:33:02.682 - DEBUG: [param.js:36:16] PARAMS -> {"name":"Tim","age":"17"}
+2024-06-04 14:33:02.684 - DEBUG: [database_mysql.js:393:28] SQL -> select                 id,                 name,                 age             from test.person where name like '%Tim%' and age > 17
+2024-06-04 14:36:20.982 - INFO: [index.js:90:12] service loader called.
+2024-06-04 14:36:20.990 - INFO: [index.js:94:12] controller loader called.
+2024-06-04 14:36:20.990 - DEBUG: [external_loader.js:33:9] external_loader called.
+2024-06-04 14:36:20.991 - DEBUG: [external_loader.js:36:16] No external configuration.
+2024-06-04 14:36:21.110 - INFO: [index.js:199:20] Http Server started.
+2024-06-04 14:36:21.111 - INFO: [index.js:210:16] Base URL -> http://localhost:8001
+2024-06-04 14:36:21.111 - INFO: [index.js:215:16] Namespace -> ::_8001_11784
+2024-06-04 14:36:21.113 - DEBUG: [database_mysql.js:61:16] database SQL file loaded.
+2024-06-04 14:36:23.603 - DEBUG: [panda-controller.js:29:16] Panda:list called for path /panda/list
+2024-06-04 14:36:23.604 - DEBUG: [param.js:19:12] GET /panda/list requested
+2024-06-04 14:36:23.605 - DEBUG: [param.js:36:16] PARAMS -> {"name":"Tim","age":"17"}
+2024-06-04 14:36:38.428 - INFO: [index.js:90:12] service loader called.
+2024-06-04 14:36:38.435 - INFO: [index.js:94:12] controller loader called.
+2024-06-04 14:36:38.436 - DEBUG: [external_loader.js:33:9] external_loader called.
+2024-06-04 14:36:38.436 - DEBUG: [external_loader.js:36:16] No external configuration.
+2024-06-04 14:36:38.555 - INFO: [index.js:199:20] Http Server started.
+2024-06-04 14:36:38.555 - INFO: [index.js:210:16] Base URL -> http://localhost:8001
+2024-06-04 14:36:38.556 - INFO: [index.js:215:16] Namespace -> ::_8001_12688
+2024-06-04 14:36:38.558 - DEBUG: [database_mysql.js:61:16] database SQL file loaded.
+2024-06-04 14:36:39.836 - DEBUG: [panda-controller.js:29:16] Panda:list called for path /panda/list
+2024-06-04 14:36:39.837 - DEBUG: [param.js:19:12] GET /panda/list requested
+2024-06-04 14:36:39.837 - DEBUG: [param.js:36:16] PARAMS -> {"name":"Tim","age":"17"}
+2024-06-04 14:36:39.856 - DEBUG: [database_mysql.js:393:28] SQL -> select                 id,                 name,                 age             from test.person where name like '%Tim%' and age > 17
+2024-06-04 14:38:31.585 - DEBUG: [panda-controller.js:29:16] Panda:list called for path /panda/list
+2024-06-04 14:38:31.586 - DEBUG: [param.js:19:12] GET /panda/list requested
+2024-06-04 14:38:31.586 - DEBUG: [param.js:36:16] PARAMS -> {"name":"Tim","age":"17"}
+2024-06-04 14:38:31.588 - DEBUG: [database_mysql.js:393:28] SQL -> select                 id,                 name,                 age             from test.person where name like '%Tim%' and age > 17
+2024-06-04 14:38:42.346 - DEBUG: [panda-controller.js:29:16] Panda:list called for path /panda/list
+2024-06-04 14:38:42.347 - DEBUG: [param.js:19:12] GET /panda/list requested
+2024-06-04 14:38:42.347 - DEBUG: [param.js:36:16] PARAMS -> {"name":"Tim","age":"23"}
+2024-06-04 14:38:42.348 - DEBUG: [database_mysql.js:393:28] SQL -> select                 id,                 name,                 age             from test.person where name like '%Tim%' and age > 23
+2024-06-04 14:38:45.512 - DEBUG: [panda-controller.js:29:16] Panda:list called for path /panda/list
+2024-06-04 14:38:45.512 - DEBUG: [param.js:19:12] GET /panda/list requested
+2024-06-04 14:38:45.512 - DEBUG: [param.js:36:16] PARAMS -> {"name":"Tim","age":"14"}
+2024-06-04 14:38:45.514 - DEBUG: [database_mysql.js:393:28] SQL -> select                 id,                 name,                 age             from test.person where name like '%Tim%' and age > 14
+2024-06-04 14:42:46.780 - DEBUG: [lion-controller.js:36:16] Lion:list called for GET /lion
+2024-06-04 14:42:46.781 - DEBUG: [param.js:19:12] GET /lion requested
+2024-06-04 14:42:46.781 - DEBUG: [param.js:36:16] PARAMS -> {}
+2024-06-04 14:42:46.783 - DEBUG: [database_mysql.js:393:28] SQL -> select count(*) as total                 from test.lion
+2024-06-04 14:42:46.783 - DEBUG: [database_mysql.js:393:28] SQL -> select                 id,                 name,                 mobile             from test.lion
+2024-06-04 14:43:07.768 - DEBUG: [lion-controller.js:36:16] Lion:list called for GET /lion
+2024-06-04 14:43:07.769 - DEBUG: [param.js:19:12] GET /lion requested
+2024-06-04 14:43:07.769 - DEBUG: [param.js:36:16] PARAMS -> {"page":"1","perPage":"10","search":"name","searchValue":"john","order":"name","orderDirection":"asc"}
+2024-06-04 14:43:07.770 - DEBUG: [database_mysql.js:393:28] SQL -> select count(*) as total                 from test.lion  where name like '%john%' 
+2024-06-04 14:43:07.771 - DEBUG: [database_mysql.js:393:28] SQL -> select                 id,                 name,                 mobile             from test.lion  where name like '%john%'   order by name asc   limit 0, 10 
+2024-06-04 14:43:15.582 - DEBUG: [sheep-controller.js:74:16] Sheep:read called for path /sheep/:id
+2024-06-04 14:43:15.583 - DEBUG: [param.js:19:12] GET /sheep/1 requested
+2024-06-04 14:43:15.583 - DEBUG: [param.js:36:16] PARAMS -> {"id":"1"}
+2024-06-04 14:43:15.583 - DEBUG: [param.js:19:12] GET /sheep/1 requested
+2024-06-04 14:43:15.584 - DEBUG: [param.js:36:16] PARAMS -> {"id":"1"}
+2024-06-04 14:43:15.607 - DEBUG: [database_mysql.js:393:28] SQL -> select id,name,age,mobile             from test.person  where id = 1 
+2024-06-04 14:43:21.515 - DEBUG: [lion-controller.js:131:16] Lion:read called for GET /lion/:id
+2024-06-04 14:43:21.515 - DEBUG: [param.js:19:12] GET /lion/1 requested
+2024-06-04 14:43:21.515 - DEBUG: [param.js:36:16] PARAMS -> {"id":"1"}
+2024-06-04 14:43:21.529 - DEBUG: [database_mysql.js:393:28] SQL -> select                 id,                 name,                 mobile             from test.lion             where id = 1
+2024-06-04 14:43:48.134 - DEBUG: [lion-controller.js:107:16] Lion:create called for POST /lion
+2024-06-04 14:43:48.134 - DEBUG: [param.js:19:12] POST /lion requested
+2024-06-04 14:43:48.135 - DEBUG: [param.js:36:16] PARAMS -> {"name":"abcd","age":"33","mobile":"01033333333"}
+2024-06-04 14:43:48.137 - DEBUG: [database_mysql.js:393:28] SQL -> insert into test.lion                     (name, mobile)               values ('abcd', '01033333333')
+2024-06-04 14:44:55.105 - DEBUG: [lion-controller.js:157:16] Lion:update called for PUT /lion/:id
+2024-06-04 14:44:55.105 - DEBUG: [param.js:19:12] PUT /lion/1 requested
+2024-06-04 14:44:55.106 - DEBUG: [param.js:36:16] PARAMS -> {"id":"1","name":"bbb","mobile":"01020002000"}
+2024-06-04 14:44:55.109 - DEBUG: [database_mysql.js:393:28] SQL -> update test.lion               set name = 'bbb',                   mobile = '01020002000'               where id = 1
+2024-06-04 14:45:10.165 - DEBUG: [lion-controller.js:36:16] Lion:list called for GET /lion
+2024-06-04 14:45:10.165 - DEBUG: [param.js:19:12] GET /lion requested
+2024-06-04 14:45:10.166 - DEBUG: [param.js:36:16] PARAMS -> {}
+2024-06-04 14:45:10.167 - DEBUG: [database_mysql.js:393:28] SQL -> select count(*) as total                 from test.lion
+2024-06-04 14:45:10.168 - DEBUG: [database_mysql.js:393:28] SQL -> select                 id,                 name,                 mobile             from test.lion
+2024-06-04 14:45:12.579 - DEBUG: [lion-controller.js:36:16] Lion:list called for GET /lion
+2024-06-04 14:45:12.579 - DEBUG: [param.js:19:12] GET /lion requested
+2024-06-04 14:45:12.580 - DEBUG: [param.js:36:16] PARAMS -> {"page":"1","perPage":"10","search":"name","searchValue":"john","order":"name","orderDirection":"asc"}
+2024-06-04 14:45:12.582 - DEBUG: [database_mysql.js:393:28] SQL -> select count(*) as total                 from test.lion  where name like '%john%' 
+2024-06-04 14:45:12.583 - DEBUG: [database_mysql.js:393:28] SQL -> select                 id,                 name,                 mobile             from test.lion  where name like '%john%'   order by name asc   limit 0, 10 
+2024-06-04 14:45:22.780 - DEBUG: [lion-controller.js:36:16] Lion:list called for GET /lion
+2024-06-04 14:45:22.780 - DEBUG: [param.js:19:12] GET /lion requested
+2024-06-04 14:45:22.781 - DEBUG: [param.js:36:16] PARAMS -> {"page":"1","perPage":"10","search":"name","searchValue":"bbb","order":"name","orderDirection":"asc"}
+2024-06-04 14:45:22.782 - DEBUG: [database_mysql.js:393:28] SQL -> select count(*) as total                 from test.lion  where name like '%bbb%' 
+2024-06-04 14:45:22.782 - DEBUG: [database_mysql.js:393:28] SQL -> select                 id,                 name,                 mobile             from test.lion  where name like '%bbb%'   order by name asc   limit 0, 10 
+2024-06-04 14:45:26.822 - DEBUG: [lion-controller.js:131:16] Lion:read called for GET /lion/:id
+2024-06-04 14:45:26.823 - DEBUG: [param.js:19:12] GET /lion/1 requested
+2024-06-04 14:45:26.823 - DEBUG: [param.js:36:16] PARAMS -> {"id":"1"}
+2024-06-04 14:45:26.825 - DEBUG: [database_mysql.js:393:28] SQL -> select                 id,                 name,                 mobile             from test.lion             where id = 1
+2024-06-04 14:45:41.257 - DEBUG: [lion-controller.js:107:16] Lion:create called for POST /lion
+2024-06-04 14:45:41.257 - DEBUG: [param.js:19:12] POST /lion requested
+2024-06-04 14:45:41.258 - DEBUG: [param.js:36:16] PARAMS -> {"name":"rtrtee","mobile":"01034223123"}
+2024-06-04 14:45:41.259 - DEBUG: [database_mysql.js:393:28] SQL -> insert into test.lion                     (name, mobile)               values ('rtrtee', '01034223123')
+2024-06-04 14:45:54.098 - DEBUG: [sheep-controller.js:112:16] Sheep:delete called for path /sheep/:id
+2024-06-04 14:45:54.098 - DEBUG: [param.js:19:12] DELETE /sheep/2 requested
+2024-06-04 14:45:54.098 - DEBUG: [param.js:36:16] PARAMS -> {"id":"2"}
+2024-06-04 14:45:54.099 - DEBUG: [param.js:19:12] DELETE /sheep/2 requested
+2024-06-04 14:45:54.099 - DEBUG: [param.js:36:16] PARAMS -> {"id":"2"}
+2024-06-04 14:45:54.120 - DEBUG: [table-controller.js:807:20] column found -> id
+2024-06-04 14:45:54.121 - DEBUG: [table-controller.js:813:20] column type -> int(11)
+2024-06-04 14:45:54.121 - DEBUG: [table-controller.js:835:18] id type -> int(11)
+2024-06-04 14:45:54.122 - DEBUG: [database_mysql.js:393:28] SQL -> delete from test.person  where id = 2 
+2024-06-04 14:45:58.580 - DEBUG: [lion-controller.js:36:16] Lion:list called for GET /lion
+2024-06-04 14:45:58.580 - DEBUG: [param.js:19:12] GET /lion requested
+2024-06-04 14:45:58.580 - DEBUG: [param.js:36:16] PARAMS -> {}
+2024-06-04 14:45:58.581 - DEBUG: [database_mysql.js:393:28] SQL -> select count(*) as total                 from test.lion
+2024-06-04 14:45:58.582 - DEBUG: [database_mysql.js:393:28] SQL -> select                 id,                 name,                 mobile             from test.lion
+2024-06-04 14:46:00.898 - DEBUG: [lion-controller.js:36:16] Lion:list called for GET /lion
+2024-06-04 14:46:00.899 - DEBUG: [param.js:19:12] GET /lion requested
+2024-06-04 14:46:00.899 - DEBUG: [param.js:36:16] PARAMS -> {}
+2024-06-04 14:46:00.904 - DEBUG: [database_mysql.js:393:28] SQL -> select count(*) as total                 from test.lion
+2024-06-04 14:46:00.908 - DEBUG: [database_mysql.js:393:28] SQL -> select                 id,                 name,                 mobile             from test.lion
+2024-06-04 14:46:14.933 - DEBUG: [lion-controller.js:183:16] Lion:delete called for DELETE /lion/:id
+2024-06-04 14:46:14.933 - DEBUG: [param.js:19:12] DELETE /lion/2 requested
+2024-06-04 14:46:14.933 - DEBUG: [param.js:36:16] PARAMS -> {"id":"2"}
+2024-06-04 14:46:14.945 - DEBUG: [database_mysql.js:393:28] SQL -> delete from test.lion             where id = 2
+2024-06-04 14:46:17.856 - DEBUG: [lion-controller.js:36:16] Lion:list called for GET /lion
+2024-06-04 14:46:17.856 - DEBUG: [param.js:19:12] GET /lion requested
+2024-06-04 14:46:17.857 - DEBUG: [param.js:36:16] PARAMS -> {}
+2024-06-04 14:46:17.858 - DEBUG: [database_mysql.js:393:28] SQL -> select count(*) as total                 from test.lion
+2024-06-04 14:46:17.858 - DEBUG: [database_mysql.js:393:28] SQL -> select                 id,                 name,                 mobile             from test.lion
+2024-06-04 15:00:21.859 - INFO: [index.js:90:12] service loader called.
+2024-06-04 15:00:21.869 - INFO: [index.js:94:12] controller loader called.
+2024-06-04 15:00:21.869 - DEBUG: [external_loader.js:33:9] external_loader called.
+2024-06-04 15:00:21.870 - DEBUG: [external_loader.js:36:16] No external configuration.
+2024-06-04 15:00:22.023 - INFO: [index.js:199:20] Http Server started.
+2024-06-04 15:00:22.024 - INFO: [index.js:210:16] Base URL -> http://localhost:8001
+2024-06-04 15:00:22.024 - INFO: [index.js:215:16] Namespace -> ::_8001_15480
+2024-06-04 15:00:22.026 - DEBUG: [database_mysql.js:61:16] database SQL file loaded.
+2024-06-04 15:01:19.581 - DEBUG: [tiger-controller.js:20:16] Tiger:hello called for path /tiger/hello
+2024-06-04 15:01:19.583 - DEBUG: [param.js:19:12] GET /tiger/hello requested
+2024-06-04 15:01:19.584 - DEBUG: [param.js:36:16] PARAMS -> {}
+2024-06-04 15:01:27.047 - DEBUG: [tiger-controller.js:20:16] Tiger:hello called for path /tiger/hello
+2024-06-04 15:01:27.048 - DEBUG: [param.js:19:12] GET /tiger/hello requested
+2024-06-04 15:01:27.048 - DEBUG: [param.js:36:16] PARAMS -> {}
+2024-06-04 15:03:05.077 - DEBUG: [param.js:19:12] GET /profile/list requested
+2024-06-04 15:03:05.078 - DEBUG: [param.js:36:16] PARAMS -> {}
+2024-06-04 15:03:05.132 - DEBUG: [database_mysql.js:393:28] SQL -> select                 id,                 name,                 age,                 mobile             from test.person
+2024-06-04 15:03:05.133 - DEBUG: [database_mysql.js:418:20] mapper found with attributes 2
+2024-06-04 15:03:05.134 - DEBUG: [database_mysql.js:420:24] INPUT ITEM -> {"id":9,"name":"소녀시대1","age":20,"mobile":"010-1000-1000"}
+2024-06-04 15:03:05.135 - DEBUG: [database_mysql.js:420:24] INPUT ITEM -> {"id":10,"name":"소녀시대2","age":20,"mobile":"010-2000-2000"}
+2024-06-04 15:03:05.136 - DEBUG: [database_mysql.js:420:24] INPUT ITEM -> {"id":11,"name":"소녀시대3","age":20,"mobile":"010-3000-3000"}
+2024-06-04 15:03:05.137 - DEBUG: [database_mysql.js:420:24] INPUT ITEM -> {"id":12,"name":"소녀시대4","age":20,"mobile":"010-4000-4000"}
+2024-06-04 15:03:05.138 - DEBUG: [database_mysql.js:420:24] INPUT ITEM -> {"id":13,"name":"소녀시대5","age":20,"mobile":"010-5000-5000"}
+2024-06-04 15:03:05.139 - DEBUG: [database_mysql.js:420:24] INPUT ITEM -> {"id":14,"name":"소녀시대6","age":20,"mobile":"010-6000-6000"}
+2024-06-04 15:03:05.139 - DEBUG: [database_mysql.js:420:24] INPUT ITEM -> {"id":15,"name":"소녀시대7","age":20,"mobile":"010-7000-7000"}
+2024-06-04 15:03:05.140 - DEBUG: [database_mysql.js:420:24] INPUT ITEM -> {"id":16,"name":"소녀시대8","age":20,"mobile":"010-8000-8000"}
+2024-06-04 15:03:05.141 - DEBUG: [database_mysql.js:420:24] INPUT ITEM -> {"id":17,"name":"소녀시대9","age":20,"mobile":"010-9000-9000"}
+2024-06-04 15:03:05.141 - DEBUG: [database_mysql.js:420:24] INPUT ITEM -> {"id":19,"name":"소녀시대11","age":20,"mobile":"010-3030-8887"}
+2024-06-04 15:03:05.143 - DEBUG: [database_mysql.js:420:24] INPUT ITEM -> {"id":20,"name":"소녀시대12","age":20,"mobile":"010-3030-8887"}
+2024-06-04 15:03:05.144 - DEBUG: [database_mysql.js:420:24] INPUT ITEM -> {"id":21,"name":"소녀시대13","age":20,"mobile":"010-3030-8887"}
+2024-06-04 15:03:05.144 - DEBUG: [database_mysql.js:420:24] INPUT ITEM -> {"id":22,"name":"홍길동1","age":20,"mobile":"010-4999-4822"}
+2024-06-04 15:03:05.145 - DEBUG: [database_mysql.js:420:24] INPUT ITEM -> {"id":23,"name":"홍길동2","age":20,"mobile":"010-4999-4822"}
+2024-06-04 15:09:50.731 - DEBUG: [tiger-controller.js:20:16] Tiger:hello called for path /tiger/hello
+2024-06-04 15:09:50.731 - DEBUG: [param.js:19:12] GET /tiger/hello requested
+2024-06-04 15:09:50.732 - DEBUG: [param.js:36:16] PARAMS -> {}
+2024-06-04 15:11:23.274 - DEBUG: [param.js:19:12] GET /profile/get requested
+2024-06-04 15:11:23.275 - DEBUG: [param.js:36:16] PARAMS -> {"name":"Tom"}
+2024-06-04 15:11:23.277 - DEBUG: [database_mysql.js:393:28] SQL -> select                 id,                 name,                 age,                 mobile             from test.person             where name like 'Tom'
+2024-06-04 15:12:00.216 - DEBUG: [panda-controller.js:28:16] Panda:list called for path /panda/list
+2024-06-04 15:12:00.217 - DEBUG: [param.js:19:12] GET /panda/list requested
+2024-06-04 15:12:00.217 - DEBUG: [param.js:36:16] PARAMS -> {"name":"Tim","age":"14"}
+2024-06-04 15:12:00.218 - DEBUG: [database_mysql.js:393:28] SQL -> select                 id,                 name,                 age             from test.person where name like '%Tim%' and age > 14
+2024-06-04 15:12:22.766 - DEBUG: [param.js:19:12] GET /profile/list requested
+2024-06-04 15:12:22.767 - DEBUG: [param.js:36:16] PARAMS -> {}
+2024-06-04 15:12:22.768 - DEBUG: [database_mysql.js:393:28] SQL -> select                 id,                 name,                 age,                 mobile             from test.person
+2024-06-04 15:12:22.768 - DEBUG: [database_mysql.js:418:20] mapper found with attributes 2
+2024-06-04 15:12:22.769 - DEBUG: [database_mysql.js:420:24] INPUT ITEM -> {"id":9,"name":"소녀시대1","age":20,"mobile":"010-1000-1000"}
+2024-06-04 15:12:22.769 - DEBUG: [database_mysql.js:420:24] INPUT ITEM -> {"id":10,"name":"소녀시대2","age":20,"mobile":"010-2000-2000"}
+2024-06-04 15:12:22.769 - DEBUG: [database_mysql.js:420:24] INPUT ITEM -> {"id":11,"name":"소녀시대3","age":20,"mobile":"010-3000-3000"}
+2024-06-04 15:12:22.769 - DEBUG: [database_mysql.js:420:24] INPUT ITEM -> {"id":12,"name":"소녀시대4","age":20,"mobile":"010-4000-4000"}
+2024-06-04 15:12:22.770 - DEBUG: [database_mysql.js:420:24] INPUT ITEM -> {"id":13,"name":"소녀시대5","age":20,"mobile":"010-5000-5000"}
+2024-06-04 15:12:22.770 - DEBUG: [database_mysql.js:420:24] INPUT ITEM -> {"id":14,"name":"소녀시대6","age":20,"mobile":"010-6000-6000"}
+2024-06-04 15:12:22.770 - DEBUG: [database_mysql.js:420:24] INPUT ITEM -> {"id":15,"name":"소녀시대7","age":20,"mobile":"010-7000-7000"}
+2024-06-04 15:12:22.771 - DEBUG: [database_mysql.js:420:24] INPUT ITEM -> {"id":16,"name":"소녀시대8","age":20,"mobile":"010-8000-8000"}
+2024-06-04 15:12:22.771 - DEBUG: [database_mysql.js:420:24] INPUT ITEM -> {"id":17,"name":"소녀시대9","age":20,"mobile":"010-9000-9000"}
+2024-06-04 15:12:22.771 - DEBUG: [database_mysql.js:420:24] INPUT ITEM -> {"id":19,"name":"소녀시대11","age":20,"mobile":"010-3030-8887"}
+2024-06-04 15:12:22.771 - DEBUG: [database_mysql.js:420:24] INPUT ITEM -> {"id":20,"name":"소녀시대12","age":20,"mobile":"010-3030-8887"}
+2024-06-04 15:12:22.772 - DEBUG: [database_mysql.js:420:24] INPUT ITEM -> {"id":21,"name":"소녀시대13","age":20,"mobile":"010-3030-8887"}
+2024-06-04 15:12:22.772 - DEBUG: [database_mysql.js:420:24] INPUT ITEM -> {"id":22,"name":"홍길동1","age":20,"mobile":"010-4999-4822"}
+2024-06-04 15:12:22.772 - DEBUG: [database_mysql.js:420:24] INPUT ITEM -> {"id":23,"name":"홍길동2","age":20,"mobile":"010-4999-4822"}
+2024-06-04 15:12:43.851 - DEBUG: [param.js:19:12] GET /profile/list requested
+2024-06-04 15:12:43.851 - DEBUG: [param.js:36:16] PARAMS -> {}
+2024-06-04 15:12:43.852 - DEBUG: [database_mysql.js:393:28] SQL -> select                 id,                 name,                 age,                 mobile             from test.person
+2024-06-04 15:12:43.853 - DEBUG: [database_mysql.js:418:20] mapper found with attributes 2
+2024-06-04 15:12:43.853 - DEBUG: [database_mysql.js:420:24] INPUT ITEM -> {"id":9,"name":"소녀시대1","age":20,"mobile":"010-1000-1000"}
+2024-06-04 15:12:43.853 - DEBUG: [database_mysql.js:420:24] INPUT ITEM -> {"id":10,"name":"소녀시대2","age":20,"mobile":"010-2000-2000"}
+2024-06-04 15:12:43.853 - DEBUG: [database_mysql.js:420:24] INPUT ITEM -> {"id":11,"name":"소녀시대3","age":20,"mobile":"010-3000-3000"}
+2024-06-04 15:12:43.853 - DEBUG: [database_mysql.js:420:24] INPUT ITEM -> {"id":12,"name":"소녀시대4","age":20,"mobile":"010-4000-4000"}
+2024-06-04 15:12:43.854 - DEBUG: [database_mysql.js:420:24] INPUT ITEM -> {"id":13,"name":"소녀시대5","age":20,"mobile":"010-5000-5000"}
+2024-06-04 15:12:43.854 - DEBUG: [database_mysql.js:420:24] INPUT ITEM -> {"id":14,"name":"소녀시대6","age":20,"mobile":"010-6000-6000"}
+2024-06-04 15:12:43.854 - DEBUG: [database_mysql.js:420:24] INPUT ITEM -> {"id":15,"name":"소녀시대7","age":20,"mobile":"010-7000-7000"}
+2024-06-04 15:12:43.854 - DEBUG: [database_mysql.js:420:24] INPUT ITEM -> {"id":16,"name":"소녀시대8","age":20,"mobile":"010-8000-8000"}
+2024-06-04 15:12:43.854 - DEBUG: [database_mysql.js:420:24] INPUT ITEM -> {"id":17,"name":"소녀시대9","age":20,"mobile":"010-9000-9000"}
+2024-06-04 15:12:43.854 - DEBUG: [database_mysql.js:420:24] INPUT ITEM -> {"id":19,"name":"소녀시대11","age":20,"mobile":"010-3030-8887"}
+2024-06-04 15:12:43.854 - DEBUG: [database_mysql.js:420:24] INPUT ITEM -> {"id":20,"name":"소녀시대12","age":20,"mobile":"010-3030-8887"}
+2024-06-04 15:12:43.855 - DEBUG: [database_mysql.js:420:24] INPUT ITEM -> {"id":21,"name":"소녀시대13","age":20,"mobile":"010-3030-8887"}
+2024-06-04 15:12:43.855 - DEBUG: [database_mysql.js:420:24] INPUT ITEM -> {"id":22,"name":"홍길동1","age":20,"mobile":"010-4999-4822"}
+2024-06-04 15:12:43.855 - DEBUG: [database_mysql.js:420:24] INPUT ITEM -> {"id":23,"name":"홍길동2","age":20,"mobile":"010-4999-4822"}
+2024-06-04 15:15:45.318 - INFO: [index.js:90:12] service loader called.
+2024-06-04 15:15:45.329 - INFO: [index.js:94:12] controller loader called.
+2024-06-04 15:15:45.329 - DEBUG: [external_loader.js:33:9] external_loader called.
+2024-06-04 15:15:45.330 - DEBUG: [external_loader.js:36:16] No external configuration.
+2024-06-04 15:15:45.513 - INFO: [index.js:199:20] Http Server started.
+2024-06-04 15:15:45.513 - INFO: [index.js:210:16] Base URL -> http://localhost:8001
+2024-06-04 15:15:45.514 - INFO: [index.js:215:16] Namespace -> ::_8001_13752
+2024-06-04 15:15:45.516 - DEBUG: [database_mysql.js:61:16] database SQL file loaded.
+2024-06-04 15:20:16.456 - INFO: [index.js:90:12] service loader called.
+2024-06-04 15:20:16.463 - INFO: [index.js:94:12] controller loader called.
+2024-06-04 15:20:16.464 - DEBUG: [external_loader.js:33:9] external_loader called.
+2024-06-04 15:20:16.464 - DEBUG: [external_loader.js:36:16] No external configuration.
+2024-06-04 15:20:16.578 - INFO: [index.js:199:20] Http Server started.
+2024-06-04 15:20:16.579 - INFO: [index.js:210:16] Base URL -> http://localhost:8001
+2024-06-04 15:20:16.580 - INFO: [index.js:215:16] Namespace -> ::_8001_5572
+2024-06-04 15:20:16.631 - DEBUG: [database_mysql.js:61:16] database SQL file loaded.
+2024-06-04 15:21:21.787 - INFO: [index.js:90:12] service loader called.
+2024-06-04 15:21:21.794 - INFO: [index.js:94:12] controller loader called.
+2024-06-04 15:21:21.794 - DEBUG: [external_loader.js:33:9] external_loader called.
+2024-06-04 15:21:21.795 - DEBUG: [external_loader.js:36:16] No external configuration.
+2024-06-04 15:21:21.908 - INFO: [index.js:199:20] Http Server started.
+2024-06-04 15:21:21.909 - INFO: [index.js:210:16] Base URL -> http://localhost:8001
+2024-06-04 15:21:21.909 - INFO: [index.js:215:16] Namespace -> ::_8001_4672
+2024-06-04 15:21:21.931 - DEBUG: [database_mysql.js:61:16] database SQL file loaded.
+2024-06-04 15:23:10.368 - INFO: [index.js:90:12] service loader called.
+2024-06-04 15:23:10.377 - INFO: [index.js:94:12] controller loader called.
+2024-06-04 15:23:10.377 - DEBUG: [external_loader.js:33:9] external_loader called.
+2024-06-04 15:23:10.377 - DEBUG: [external_loader.js:36:16] No external configuration.
+2024-06-04 15:23:10.500 - INFO: [index.js:199:20] Http Server started.
+2024-06-04 15:23:10.500 - INFO: [index.js:210:16] Base URL -> http://localhost:8001
+2024-06-04 15:23:10.501 - INFO: [index.js:215:16] Namespace -> ::_8001_352
+2024-06-04 15:23:10.502 - DEBUG: [database_mysql.js:61:16] database SQL file loaded.
+2024-06-04 15:23:17.094 - INFO: [index.js:90:12] service loader called.
+2024-06-04 15:23:17.103 - INFO: [index.js:94:12] controller loader called.
+2024-06-04 15:23:17.103 - DEBUG: [external_loader.js:33:9] external_loader called.
+2024-06-04 15:23:17.104 - DEBUG: [external_loader.js:36:16] No external configuration.
+2024-06-04 15:23:17.226 - INFO: [index.js:199:20] Http Server started.
+2024-06-04 15:23:17.226 - INFO: [index.js:210:16] Base URL -> http://localhost:8001
+2024-06-04 15:23:17.227 - INFO: [index.js:215:16] Namespace -> ::_8001_11440
+2024-06-04 15:23:17.249 - DEBUG: [database_mysql.js:61:16] database SQL file loaded.
+2024-06-04 15:23:57.922 - INFO: [index.js:90:12] service loader called.
+2024-06-04 15:23:57.930 - INFO: [index.js:94:12] controller loader called.
+2024-06-04 15:23:57.930 - DEBUG: [external_loader.js:33:9] external_loader called.
+2024-06-04 15:23:57.930 - DEBUG: [external_loader.js:36:16] No external configuration.
+2024-06-04 15:23:58.045 - INFO: [index.js:199:20] Http Server started.
+2024-06-04 15:23:58.046 - INFO: [index.js:210:16] Base URL -> http://localhost:8001
+2024-06-04 15:23:58.046 - INFO: [index.js:215:16] Namespace -> ::_8001_14956
+2024-06-04 15:23:58.067 - DEBUG: [database_mysql.js:61:16] database SQL file loaded.
+2024-06-04 15:25:21.646 - INFO: [index.js:90:12] service loader called.
+2024-06-04 15:25:21.654 - INFO: [index.js:94:12] controller loader called.
+2024-06-04 15:25:21.655 - DEBUG: [external_loader.js:33:9] external_loader called.
+2024-06-04 15:25:21.655 - DEBUG: [external_loader.js:36:16] No external configuration.
+2024-06-04 15:25:21.772 - INFO: [index.js:199:20] Http Server started.
+2024-06-04 15:25:21.773 - INFO: [index.js:210:16] Base URL -> http://localhost:8001
+2024-06-04 15:25:21.773 - INFO: [index.js:215:16] Namespace -> ::_8001_17776
+2024-06-04 15:25:21.795 - DEBUG: [socketio_loader.js:87:9] socketio_loader.load called.
+2024-06-04 15:25:21.796 - DEBUG: [socketio_loader.js:97:16] read namespace file -> ::_7001_29492
+2024-06-04 15:25:21.807 - INFO: [index.js:223:20] socket.io loader called.
+2024-06-04 15:25:21.811 - DEBUG: [database_mysql.js:61:16] database SQL file loaded.
+2024-06-04 15:25:21.824 - DEBUG: [socketio_loader.js:65:12] pubClient error -> Error: Redis connection to 127.0.0.1:10425 failed - connect ECONNREFUSED 127.0.0.1:10425
+2024-06-04 15:25:21.825 - DEBUG: [socketio_loader.js:69:12] subClient error -> Error: Redis connection to 127.0.0.1:10425 failed - connect ECONNREFUSED 127.0.0.1:10425
+2024-06-04 15:25:21.825 - DEBUG: [socketio_loader.js:73:12] store error -> Error: Redis connection to 127.0.0.1:10425 failed - connect ECONNREFUSED 127.0.0.1:10425
+2024-06-04 15:25:21.826 - DEBUG: [socketio_loader.js:77:12] pub error -> Error: Redis connection to 127.0.0.1:10425 failed - connect ECONNREFUSED 127.0.0.1:10425
+2024-06-04 15:25:21.827 - DEBUG: [socketio_loader.js:81:12] sub error -> Error: Redis connection to 127.0.0.1:10425 failed - connect ECONNREFUSED 127.0.0.1:10425
+2024-06-04 15:25:21.840 - DEBUG: [database_mysql.js:393:28] SQL ->             update chat.connection             set presence = 'off',                 modify_date = now()             where                 namespace = '::_7001_29492'
+2024-06-04 15:25:21.841 - DEBUG: [socketio_loader.js:114:20] chat_reset_presence sql executed.
+2024-06-04 15:25:21.860 - DEBUG: [socketio_loader.js:132:16] namespace file saved to -> ./socketio.pid
+2024-06-04 15:25:21.861 - DEBUG: [socketio_loader.js:133:16] write namespace file -> ::_8001_17776
+2024-06-04 15:25:21.861 - INFO: [socketio_loader.js:141:12] socket.io service started.
+2024-06-04 15:25:21.862 - DEBUG: [socketio_loader.js:155:12] redis subscribed -> myapp_message
+2024-06-04 15:25:22.043 - DEBUG: [socketio_loader.js:65:12] pubClient error -> Error: Redis connection to 127.0.0.1:10425 failed - connect ECONNREFUSED 127.0.0.1:10425
+2024-06-04 15:25:22.046 - DEBUG: [socketio_loader.js:69:12] subClient error -> Error: Redis connection to 127.0.0.1:10425 failed - connect ECONNREFUSED 127.0.0.1:10425
+2024-06-04 15:25:22.047 - DEBUG: [socketio_loader.js:73:12] store error -> Error: Redis connection to 127.0.0.1:10425 failed - connect ECONNREFUSED 127.0.0.1:10425
+2024-06-04 15:25:22.047 - DEBUG: [socketio_loader.js:77:12] pub error -> Error: Redis connection to 127.0.0.1:10425 failed - connect ECONNREFUSED 127.0.0.1:10425
+2024-06-04 15:25:22.048 - DEBUG: [socketio_loader.js:81:12] sub error -> Error: Redis connection to 127.0.0.1:10425 failed - connect ECONNREFUSED 127.0.0.1:10425
+2024-06-04 15:25:40.108 - INFO: [index.js:90:12] service loader called.
+2024-06-04 15:25:40.115 - INFO: [index.js:94:12] controller loader called.
+2024-06-04 15:25:40.116 - DEBUG: [external_loader.js:33:9] external_loader called.
+2024-06-04 15:25:40.116 - DEBUG: [external_loader.js:36:16] No external configuration.
+2024-06-04 15:25:40.235 - INFO: [index.js:199:20] Http Server started.
+2024-06-04 15:25:40.235 - INFO: [index.js:210:16] Base URL -> http://localhost:8001
+2024-06-04 15:25:40.236 - INFO: [index.js:215:16] Namespace -> ::_8001_12752
+2024-06-04 15:25:40.255 - DEBUG: [socketio_loader.js:87:9] socketio_loader.load called.
+2024-06-04 15:25:40.256 - DEBUG: [socketio_loader.js:97:16] read namespace file -> ::_8001_17776
+2024-06-04 15:25:40.267 - INFO: [index.js:223:20] socket.io loader called.
+2024-06-04 15:25:40.271 - DEBUG: [database_mysql.js:61:16] database SQL file loaded.
+2024-06-04 15:25:40.291 - DEBUG: [database_mysql.js:393:28] SQL ->             update chat.connection             set presence = 'off',                 modify_date = now()             where                 namespace = '::_8001_17776'
+2024-06-04 15:25:40.292 - DEBUG: [socketio_loader.js:114:20] chat_reset_presence sql executed.
+2024-06-04 15:25:40.301 - DEBUG: [socketio_loader.js:132:16] namespace file saved to -> ./socketio.pid
+2024-06-04 15:25:40.301 - DEBUG: [socketio_loader.js:133:16] write namespace file -> ::_8001_12752
+2024-06-04 15:25:40.301 - INFO: [socketio_loader.js:141:12] socket.io service started.
+2024-06-04 15:25:40.302 - DEBUG: [socketio_loader.js:155:12] redis subscribed -> myapp_message
+2024-06-04 15:25:47.093 - DEBUG: [socketio_loader.js:169:16] connection -> {"address":"::ffff:192.168.236.15","family":"IPv6","port":34304}
+2024-06-04 15:25:47.094 - DEBUG: [socketio_loader.js:170:16] socket id -> mtJEsP72OVbaX3jYAAAA
+2024-06-04 15:25:47.097 - DEBUG: [database_mysql.js:393:28] SQL ->             insert into chat.connection                 (socket_id, namespace, presence)             values                 ('mtJEsP72OVbaX3jYAAAA', '::_8001_12752', 'off')
+2024-06-04 15:25:47.098 - DEBUG: [socketio_loader.js:185:20] chat_save_connection sql executed.
+2024-06-04 15:25:47.099 - DEBUG: [socketio_loader.js:257:9] Count of event handler in socketio_config  : 6
+2024-06-04 15:25:47.099 - DEBUG: [socketio_loader.js:264:16] filename #0 : C:\root\chang\ubiaccess-chang\socketio\chat
+2024-06-04 15:25:47.100 - DEBUG: [chat.js:18:16] ChatHandler initialized.
+2024-06-04 15:25:47.101 - DEBUG: [socketio_loader.js:279:16] Socket.io handler loaded from chat.
+2024-06-04 15:25:47.101 - DEBUG: [socketio_loader.js:297:12] Socket.io handler registered [login] -> [login]
+2024-06-04 15:25:47.101 - DEBUG: [socketio_loader.js:264:16] filename #1 : C:\root\chang\ubiaccess-chang\socketio\chat
+2024-06-04 15:25:47.102 - DEBUG: [chat.js:18:16] ChatHandler initialized.
+2024-06-04 15:25:47.102 - DEBUG: [socketio_loader.js:279:16] Socket.io handler loaded from chat.
+2024-06-04 15:25:47.102 - DEBUG: [socketio_loader.js:297:12] Socket.io handler registered [logout] -> [logout]
+2024-06-04 15:25:47.103 - DEBUG: [socketio_loader.js:264:16] filename #2 : C:\root\chang\ubiaccess-chang\socketio\chat
+2024-06-04 15:25:47.103 - DEBUG: [chat.js:18:16] ChatHandler initialized.
+2024-06-04 15:25:47.103 - DEBUG: [socketio_loader.js:279:16] Socket.io handler loaded from chat.
+2024-06-04 15:25:47.103 - DEBUG: [socketio_loader.js:297:12] Socket.io handler registered [message] -> [message]
+2024-06-04 15:25:47.104 - DEBUG: [socketio_loader.js:264:16] filename #3 : C:\root\chang\ubiaccess-chang\socketio\groupchat
+2024-06-04 15:25:47.104 - DEBUG: [groupchat.js:18:16] GroupChatHandler initialized.
+2024-06-04 15:25:47.104 - DEBUG: [socketio_loader.js:279:16] Socket.io handler loaded from groupchat.
+2024-06-04 15:25:47.105 - DEBUG: [socketio_loader.js:297:12] Socket.io handler registered [login_group] -> [login_group]
+2024-06-04 15:25:47.105 - DEBUG: [socketio_loader.js:264:16] filename #4 : C:\root\chang\ubiaccess-chang\socketio\groupchat
+2024-06-04 15:25:47.105 - DEBUG: [groupchat.js:18:16] GroupChatHandler initialized.
+2024-06-04 15:25:47.105 - DEBUG: [socketio_loader.js:279:16] Socket.io handler loaded from groupchat.
+2024-06-04 15:25:47.105 - DEBUG: [socketio_loader.js:297:12] Socket.io handler registered [logout_group] -> [logout_group]
+2024-06-04 15:25:47.105 - DEBUG: [socketio_loader.js:264:16] filename #5 : C:\root\chang\ubiaccess-chang\socketio\groupchat
+2024-06-04 15:25:47.105 - DEBUG: [groupchat.js:18:16] GroupChatHandler initialized.
+2024-06-04 15:25:47.105 - DEBUG: [socketio_loader.js:279:16] Socket.io handler loaded from groupchat.
+2024-06-04 15:25:47.105 - DEBUG: [socketio_loader.js:297:12] Socket.io handler registered [message_group] -> [message_group]
+2024-06-04 15:25:47.106 - DEBUG: [socketio_util.js:185:12] sendResponse called.
+2024-06-04 15:25:47.953 - DEBUG: [socketio_loader.js:169:16] connection -> {"address":"::ffff:192.168.236.77","family":"IPv6","port":39256}
+2024-06-04 15:25:47.953 - DEBUG: [socketio_loader.js:170:16] socket id -> uvnXnVXZlr7nMDEaAAAB
+2024-06-04 15:25:47.967 - DEBUG: [database_mysql.js:393:28] SQL ->             insert into chat.connection                 (socket_id, namespace, presence)             values                 ('uvnXnVXZlr7nMDEaAAAB', '::_8001_12752', 'off')
+2024-06-04 15:25:47.968 - DEBUG: [socketio_loader.js:185:20] chat_save_connection sql executed.
+2024-06-04 15:25:47.968 - DEBUG: [socketio_loader.js:257:9] Count of event handler in socketio_config  : 6
+2024-06-04 15:25:47.968 - DEBUG: [socketio_loader.js:264:16] filename #0 : C:\root\chang\ubiaccess-chang\socketio\chat
+2024-06-04 15:25:47.969 - DEBUG: [chat.js:18:16] ChatHandler initialized.
+2024-06-04 15:25:47.969 - DEBUG: [socketio_loader.js:279:16] Socket.io handler loaded from chat.
+2024-06-04 15:25:47.969 - DEBUG: [socketio_loader.js:297:12] Socket.io handler registered [login] -> [login]
+2024-06-04 15:25:47.970 - DEBUG: [socketio_loader.js:264:16] filename #1 : C:\root\chang\ubiaccess-chang\socketio\chat
+2024-06-04 15:25:47.970 - DEBUG: [chat.js:18:16] ChatHandler initialized.
+2024-06-04 15:25:47.971 - DEBUG: [socketio_loader.js:279:16] Socket.io handler loaded from chat.
+2024-06-04 15:25:47.971 - DEBUG: [socketio_loader.js:297:12] Socket.io handler registered [logout] -> [logout]
+2024-06-04 15:25:47.971 - DEBUG: [socketio_loader.js:264:16] filename #2 : C:\root\chang\ubiaccess-chang\socketio\chat
+2024-06-04 15:25:47.971 - DEBUG: [chat.js:18:16] ChatHandler initialized.
+2024-06-04 15:25:47.972 - DEBUG: [socketio_loader.js:279:16] Socket.io handler loaded from chat.
+2024-06-04 15:25:47.972 - DEBUG: [socketio_loader.js:297:12] Socket.io handler registered [message] -> [message]
+2024-06-04 15:25:47.972 - DEBUG: [socketio_loader.js:264:16] filename #3 : C:\root\chang\ubiaccess-chang\socketio\groupchat
+2024-06-04 15:25:47.973 - DEBUG: [groupchat.js:18:16] GroupChatHandler initialized.
+2024-06-04 15:25:47.973 - DEBUG: [socketio_loader.js:279:16] Socket.io handler loaded from groupchat.
+2024-06-04 15:25:47.973 - DEBUG: [socketio_loader.js:297:12] Socket.io handler registered [login_group] -> [login_group]
+2024-06-04 15:25:47.973 - DEBUG: [socketio_loader.js:264:16] filename #4 : C:\root\chang\ubiaccess-chang\socketio\groupchat
+2024-06-04 15:25:47.974 - DEBUG: [groupchat.js:18:16] GroupChatHandler initialized.
+2024-06-04 15:25:47.974 - DEBUG: [socketio_loader.js:279:16] Socket.io handler loaded from groupchat.
+2024-06-04 15:25:47.974 - DEBUG: [socketio_loader.js:297:12] Socket.io handler registered [logout_group] -> [logout_group]
+2024-06-04 15:25:47.975 - DEBUG: [socketio_loader.js:264:16] filename #5 : C:\root\chang\ubiaccess-chang\socketio\groupchat
+2024-06-04 15:25:47.975 - DEBUG: [groupchat.js:18:16] GroupChatHandler initialized.
+2024-06-04 15:25:47.975 - DEBUG: [socketio_loader.js:279:16] Socket.io handler loaded from groupchat.
+2024-06-04 15:25:47.975 - DEBUG: [socketio_loader.js:297:12] Socket.io handler registered [message_group] -> [message_group]
+2024-06-04 15:25:47.976 - DEBUG: [socketio_util.js:185:12] sendResponse called.
+2024-06-04 15:25:58.503 - DEBUG: [socketio_loader.js:291:16] login event received.
+2024-06-04 15:25:58.504 - DEBUG: [socketio_loader.js:292:16] INPUT -> {"requestCode":"1717481370828","userId":"test02","id":"test02","password":"123456","alias":"hello","today":"hello"}
+2024-06-04 15:25:58.504 - DEBUG: [chat.js:27:16] login called. this server namespace -> ::_8001_12752
+2024-06-04 15:25:58.505 - DEBUG: [chat.js:32:16] added to redis : test02 -> ::_8001_12752\uvnXnVXZlr7nMDEaAAAB
+2024-06-04 15:25:58.506 - DEBUG: [chat.js:134:16] getClientCount called.
+2024-06-04 15:25:58.518 - DEBUG: [chat.js:50:11] Error in executing sql -> Sql definition for undefined not found in sql_config
+2024-06-04 15:25:58.518 - DEBUG: [socketio_util.js:185:12] sendResponse called.
+2024-06-04 15:25:58.519 - DEBUG: [chat.js:95:11] Error in processing unsent messages -> Sql definition for undefined not found in sql_config
+2024-06-04 15:25:58.520 - DEBUG: [chat.js:143:20] Count of clients : 1
+2024-06-04 15:26:02.851 - DEBUG: [socketio_loader.js:291:16] message event received.
+2024-06-04 15:26:02.852 - DEBUG: [socketio_loader.js:292:16] INPUT -> {"requestCode":"1717481370829","userId":"test02","sender":"test02","receiver":"test01","command":"chat","type":"text","data":"Hello!"}
+2024-06-04 15:26:02.852 - DEBUG: [socketio_util.js:61:12] sendData called. this server namespace -> ::_8001_12752
+2024-06-04 15:26:02.853 - DEBUG: [socketio_util.js:185:12] sendResponse called.
+2024-06-04 15:26:02.868 - DEBUG: [database_mysql.js:393:28] SQL ->             insert into chat.message                 (id, sender, receiver, command, type, data, namespace, status)             values                 ('1717481370829', 'test02', 'test01', 'chat', 'text', 'Hello!', '::_8001_12752', '100')
+2024-06-04 15:26:02.868 - DEBUG: [socketio_util.js:90:20] chat_save_message sql executed.
+2024-06-04 15:26:04.229 - DEBUG: [socketio_loader.js:291:16] login event received.
+2024-06-04 15:26:04.229 - DEBUG: [socketio_loader.js:292:16] INPUT -> {"requestCode":"1717481291964","userId":"test01","id":"test01","password":"123456","alias":"hello","today":"hello"}
+2024-06-04 15:26:04.230 - DEBUG: [chat.js:27:16] login called. this server namespace -> ::_8001_12752
+2024-06-04 15:26:04.231 - DEBUG: [chat.js:32:16] added to redis : test01 -> ::_8001_12752\mtJEsP72OVbaX3jYAAAA
+2024-06-04 15:26:04.232 - DEBUG: [chat.js:134:16] getClientCount called.
+2024-06-04 15:26:04.233 - DEBUG: [chat.js:50:11] Error in executing sql -> Sql definition for undefined not found in sql_config
+2024-06-04 15:26:04.233 - DEBUG: [socketio_util.js:185:12] sendResponse called.
+2024-06-04 15:26:04.235 - DEBUG: [chat.js:95:11] Error in processing unsent messages -> Sql definition for undefined not found in sql_config
+2024-06-04 15:26:04.235 - DEBUG: [chat.js:143:20] Count of clients : 2
+2024-06-04 15:26:07.671 - DEBUG: [socketio_loader.js:291:16] message event received.
+2024-06-04 15:26:07.672 - DEBUG: [socketio_loader.js:292:16] INPUT -> {"requestCode":"1717481291965","userId":"test01","sender":"test01","receiver":"test02","command":"chat","type":"text","data":"Hello!"}
+2024-06-04 15:26:07.673 - DEBUG: [socketio_util.js:61:12] sendData called. this server namespace -> ::_8001_12752
+2024-06-04 15:26:07.674 - DEBUG: [socketio_util.js:185:12] sendResponse called.
+2024-06-04 15:26:07.677 - DEBUG: [database_mysql.js:393:28] SQL ->             insert into chat.message                 (id, sender, receiver, command, type, data, namespace, status)             values                 ('1717481291965', 'test01', 'test02', 'chat', 'text', 'Hello!', '::_8001_12752', '100')
+2024-06-04 15:26:07.678 - DEBUG: [socketio_util.js:90:20] chat_save_message sql executed.
+2024-06-04 15:26:07.679 - DEBUG: [socketio_util.js:106:20] value from redis : test02 -> ::_8001_12752\uvnXnVXZlr7nMDEaAAAB
+2024-06-04 15:26:07.679 - DEBUG: [socketio_util.js:110:20] parsed socket id : ::_8001_12752, uvnXnVXZlr7nMDEaAAAB
+2024-06-04 15:26:07.679 - DEBUG: [socketio_util.js:115:28] event -> message
+2024-06-04 15:26:07.680 - DEBUG: [socketio_util.js:117:28] sent to the client of this namespace.
+2024-06-04 15:26:07.682 - DEBUG: [database_mysql.js:393:28] SQL ->             update chat.message             set status = '200',                 sent_date = now(),                 modify_date = now()             where                 id = '1717481291965'
+2024-06-04 15:26:07.682 - DEBUG: [socketio_util.js:134:32] chat_save_message_status sql executed.
+2024-06-04 15:26:10.742 - DEBUG: [socketio_loader.js:291:16] message event received.
+2024-06-04 15:26:10.743 - DEBUG: [socketio_loader.js:292:16] INPUT -> {"requestCode":"1717481370830","userId":"test02","sender":"test02","receiver":"test01","command":"chat","type":"text","data":"Hello!"}
+2024-06-04 15:26:10.744 - DEBUG: [socketio_util.js:61:12] sendData called. this server namespace -> ::_8001_12752
+2024-06-04 15:26:10.745 - DEBUG: [socketio_util.js:185:12] sendResponse called.
+2024-06-04 15:26:10.759 - DEBUG: [database_mysql.js:393:28] SQL ->             insert into chat.message                 (id, sender, receiver, command, type, data, namespace, status)             values                 ('1717481370830', 'test02', 'test01', 'chat', 'text', 'Hello!', '::_8001_12752', '100')
+2024-06-04 15:26:10.760 - DEBUG: [socketio_util.js:90:20] chat_save_message sql executed.
+2024-06-04 15:26:10.760 - DEBUG: [socketio_util.js:106:20] value from redis : test01 -> ::_8001_12752\mtJEsP72OVbaX3jYAAAA
+2024-06-04 15:26:10.761 - DEBUG: [socketio_util.js:110:20] parsed socket id : ::_8001_12752, mtJEsP72OVbaX3jYAAAA
+2024-06-04 15:26:10.761 - DEBUG: [socketio_util.js:115:28] event -> message
+2024-06-04 15:26:10.762 - DEBUG: [socketio_util.js:117:28] sent to the client of this namespace.
+2024-06-04 15:26:10.764 - DEBUG: [database_mysql.js:393:28] SQL ->             update chat.message             set status = '200',                 sent_date = now(),                 modify_date = now()             where                 id = '1717481370830'
+2024-06-04 15:26:10.764 - DEBUG: [socketio_util.js:134:32] chat_save_message_status sql executed.
+2024-06-04 15:27:34.145 - INFO: [index.js:90:12] service loader called.
+2024-06-04 15:27:34.153 - INFO: [index.js:94:12] controller loader called.
+2024-06-04 15:27:34.153 - DEBUG: [external_loader.js:33:9] external_loader called.
+2024-06-04 15:27:34.153 - DEBUG: [external_loader.js:36:16] No external configuration.
+2024-06-04 15:27:34.270 - INFO: [index.js:199:20] Http Server started.
+2024-06-04 15:27:34.270 - INFO: [index.js:210:16] Base URL -> http://localhost:8001
+2024-06-04 15:27:34.271 - INFO: [index.js:215:16] Namespace -> ::_8001_7408
+2024-06-04 15:27:34.292 - DEBUG: [database_mysql.js:61:16] database SQL file loaded.
+2024-06-04 15:27:45.758 - INFO: [index.js:90:12] service loader called.
+2024-06-04 15:27:45.766 - INFO: [index.js:94:12] controller loader called.
+2024-06-04 15:27:45.766 - DEBUG: [external_loader.js:33:9] external_loader called.
+2024-06-04 15:27:45.766 - DEBUG: [external_loader.js:36:16] No external configuration.
+2024-06-04 15:27:45.883 - INFO: [index.js:199:20] Http Server started.
+2024-06-04 15:27:45.884 - INFO: [index.js:210:16] Base URL -> http://localhost:8001
+2024-06-04 15:27:45.884 - INFO: [index.js:215:16] Namespace -> ::_8001_8832
+2024-06-04 15:27:45.905 - DEBUG: [socketio_loader.js:87:9] socketio_loader.load called.
+2024-06-04 15:27:45.905 - DEBUG: [socketio_loader.js:97:16] read namespace file -> ::_8001_12752
+2024-06-04 15:27:45.916 - INFO: [index.js:223:20] socket.io loader called.
+2024-06-04 15:27:45.919 - DEBUG: [database_mysql.js:61:16] database SQL file loaded.
+2024-06-04 15:27:45.941 - DEBUG: [database_mysql.js:393:28] SQL ->             update chat.connection             set presence = 'off',                 modify_date = now()             where                 namespace = '::_8001_12752'
+2024-06-04 15:27:45.942 - DEBUG: [socketio_loader.js:114:20] chat_reset_presence sql executed.
+2024-06-04 15:27:45.951 - DEBUG: [socketio_loader.js:132:16] namespace file saved to -> ./socketio.pid
+2024-06-04 15:27:45.951 - DEBUG: [socketio_loader.js:133:16] write namespace file -> ::_8001_8832
+2024-06-04 15:27:45.951 - INFO: [socketio_loader.js:141:12] socket.io service started.
+2024-06-04 15:27:45.952 - DEBUG: [socketio_loader.js:155:12] redis subscribed -> myapp_message
+2024-06-04 15:27:49.861 - DEBUG: [socketio_loader.js:169:16] connection -> {"address":"::ffff:192.168.236.15","family":"IPv6","port":34308}
+2024-06-04 15:27:49.862 - DEBUG: [socketio_loader.js:170:16] socket id -> s6Gk_YYFle8bkbipAAAA
+2024-06-04 15:27:49.864 - DEBUG: [socketio_loader.js:169:16] connection -> {"address":"::ffff:192.168.236.77","family":"IPv6","port":43698}
+2024-06-04 15:27:49.864 - DEBUG: [socketio_loader.js:170:16] socket id -> X8p1CC3fsdoIVV5SAAAB
+2024-06-04 15:27:49.877 - DEBUG: [database_mysql.js:393:28] SQL ->             insert into chat.connection                 (socket_id, namespace, presence)             values                 ('s6Gk_YYFle8bkbipAAAA', '::_8001_8832', 'off')
+2024-06-04 15:27:49.878 - DEBUG: [socketio_loader.js:185:20] chat_save_connection sql executed.
+2024-06-04 15:27:49.878 - DEBUG: [socketio_loader.js:257:9] Count of event handler in socketio_config  : 6
+2024-06-04 15:27:49.879 - DEBUG: [socketio_loader.js:264:16] filename #0 : C:\root\chang\ubiaccess-chang\socketio\chat
+2024-06-04 15:27:49.880 - DEBUG: [chat.js:18:16] ChatHandler initialized.
+2024-06-04 15:27:49.880 - DEBUG: [socketio_loader.js:279:16] Socket.io handler loaded from chat.
+2024-06-04 15:27:49.880 - DEBUG: [socketio_loader.js:297:12] Socket.io handler registered [login] -> [login]
+2024-06-04 15:27:49.880 - DEBUG: [socketio_loader.js:264:16] filename #1 : C:\root\chang\ubiaccess-chang\socketio\chat
+2024-06-04 15:27:49.881 - DEBUG: [chat.js:18:16] ChatHandler initialized.
+2024-06-04 15:27:49.881 - DEBUG: [socketio_loader.js:279:16] Socket.io handler loaded from chat.
+2024-06-04 15:27:49.881 - DEBUG: [socketio_loader.js:297:12] Socket.io handler registered [logout] -> [logout]
+2024-06-04 15:27:49.882 - DEBUG: [socketio_loader.js:264:16] filename #2 : C:\root\chang\ubiaccess-chang\socketio\chat
+2024-06-04 15:27:49.882 - DEBUG: [chat.js:18:16] ChatHandler initialized.
+2024-06-04 15:27:49.882 - DEBUG: [socketio_loader.js:279:16] Socket.io handler loaded from chat.
+2024-06-04 15:27:49.882 - DEBUG: [socketio_loader.js:297:12] Socket.io handler registered [message] -> [message]
+2024-06-04 15:27:49.883 - DEBUG: [socketio_loader.js:264:16] filename #3 : C:\root\chang\ubiaccess-chang\socketio\groupchat
+2024-06-04 15:27:49.883 - DEBUG: [groupchat.js:18:16] GroupChatHandler initialized.
+2024-06-04 15:27:49.883 - DEBUG: [socketio_loader.js:279:16] Socket.io handler loaded from groupchat.
+2024-06-04 15:27:49.884 - DEBUG: [socketio_loader.js:297:12] Socket.io handler registered [login_group] -> [login_group]
+2024-06-04 15:27:49.884 - DEBUG: [socketio_loader.js:264:16] filename #4 : C:\root\chang\ubiaccess-chang\socketio\groupchat
+2024-06-04 15:27:49.884 - DEBUG: [groupchat.js:18:16] GroupChatHandler initialized.
+2024-06-04 15:27:49.884 - DEBUG: [socketio_loader.js:279:16] Socket.io handler loaded from groupchat.
+2024-06-04 15:27:49.885 - DEBUG: [socketio_loader.js:297:12] Socket.io handler registered [logout_group] -> [logout_group]
+2024-06-04 15:27:49.885 - DEBUG: [socketio_loader.js:264:16] filename #5 : C:\root\chang\ubiaccess-chang\socketio\groupchat
+2024-06-04 15:27:49.885 - DEBUG: [groupchat.js:18:16] GroupChatHandler initialized.
+2024-06-04 15:27:49.886 - DEBUG: [socketio_loader.js:279:16] Socket.io handler loaded from groupchat.
+2024-06-04 15:27:49.886 - DEBUG: [socketio_loader.js:297:12] Socket.io handler registered [message_group] -> [message_group]
+2024-06-04 15:27:49.886 - DEBUG: [socketio_util.js:185:12] sendResponse called.
+2024-06-04 15:27:49.888 - DEBUG: [database_mysql.js:393:28] SQL ->             insert into chat.connection                 (socket_id, namespace, presence)             values                 ('X8p1CC3fsdoIVV5SAAAB', '::_8001_8832', 'off')
+2024-06-04 15:27:49.889 - DEBUG: [socketio_loader.js:185:20] chat_save_connection sql executed.
+2024-06-04 15:27:49.889 - DEBUG: [socketio_loader.js:257:9] Count of event handler in socketio_config  : 6
+2024-06-04 15:27:49.889 - DEBUG: [socketio_loader.js:264:16] filename #0 : C:\root\chang\ubiaccess-chang\socketio\chat
+2024-06-04 15:27:49.889 - DEBUG: [chat.js:18:16] ChatHandler initialized.
+2024-06-04 15:27:49.890 - DEBUG: [socketio_loader.js:279:16] Socket.io handler loaded from chat.
+2024-06-04 15:27:49.890 - DEBUG: [socketio_loader.js:297:12] Socket.io handler registered [login] -> [login]
+2024-06-04 15:27:49.890 - DEBUG: [socketio_loader.js:264:16] filename #1 : C:\root\chang\ubiaccess-chang\socketio\chat
+2024-06-04 15:27:49.890 - DEBUG: [chat.js:18:16] ChatHandler initialized.
+2024-06-04 15:27:49.890 - DEBUG: [socketio_loader.js:279:16] Socket.io handler loaded from chat.
+2024-06-04 15:27:49.890 - DEBUG: [socketio_loader.js:297:12] Socket.io handler registered [logout] -> [logout]
+2024-06-04 15:27:49.890 - DEBUG: [socketio_loader.js:264:16] filename #2 : C:\root\chang\ubiaccess-chang\socketio\chat
+2024-06-04 15:27:49.890 - DEBUG: [chat.js:18:16] ChatHandler initialized.
+2024-06-04 15:27:49.891 - DEBUG: [socketio_loader.js:279:16] Socket.io handler loaded from chat.
+2024-06-04 15:27:49.891 - DEBUG: [socketio_loader.js:297:12] Socket.io handler registered [message] -> [message]
+2024-06-04 15:27:49.891 - DEBUG: [socketio_loader.js:264:16] filename #3 : C:\root\chang\ubiaccess-chang\socketio\groupchat
+2024-06-04 15:27:49.891 - DEBUG: [groupchat.js:18:16] GroupChatHandler initialized.
+2024-06-04 15:27:49.891 - DEBUG: [socketio_loader.js:279:16] Socket.io handler loaded from groupchat.
+2024-06-04 15:27:49.891 - DEBUG: [socketio_loader.js:297:12] Socket.io handler registered [login_group] -> [login_group]
+2024-06-04 15:27:49.891 - DEBUG: [socketio_loader.js:264:16] filename #4 : C:\root\chang\ubiaccess-chang\socketio\groupchat
+2024-06-04 15:27:49.891 - DEBUG: [groupchat.js:18:16] GroupChatHandler initialized.
+2024-06-04 15:27:49.891 - DEBUG: [socketio_loader.js:279:16] Socket.io handler loaded from groupchat.
+2024-06-04 15:27:49.892 - DEBUG: [socketio_loader.js:297:12] Socket.io handler registered [logout_group] -> [logout_group]
+2024-06-04 15:27:49.892 - DEBUG: [socketio_loader.js:264:16] filename #5 : C:\root\chang\ubiaccess-chang\socketio\groupchat
+2024-06-04 15:27:49.892 - DEBUG: [groupchat.js:18:16] GroupChatHandler initialized.
+2024-06-04 15:27:49.892 - DEBUG: [socketio_loader.js:279:16] Socket.io handler loaded from groupchat.
+2024-06-04 15:27:49.892 - DEBUG: [socketio_loader.js:297:12] Socket.io handler registered [message_group] -> [message_group]
+2024-06-04 15:27:49.892 - DEBUG: [socketio_util.js:185:12] sendResponse called.
+2024-06-04 15:27:58.769 - DEBUG: [socketio_loader.js:192:20] disconnect called. -> s6Gk_YYFle8bkbipAAAA
+2024-06-04 15:27:58.770 - DEBUG: [socketio_loader.js:194:20] reason -> transport close
+2024-06-04 15:27:58.785 - DEBUG: [database_mysql.js:393:28] SQL ->             update chat.connection             set disconnect_date = now(),                 presence = 'off',                 modify_date = now()             where                 socket_id = 's6Gk_YYFle8bkbipAAAA'
+2024-06-04 15:27:58.786 - DEBUG: [socketio_loader.js:209:24] chat_save_disconnect sql executed.
+2024-06-04 15:27:59.030 - DEBUG: [socketio_loader.js:192:20] disconnect called. -> X8p1CC3fsdoIVV5SAAAB
+2024-06-04 15:27:59.031 - DEBUG: [socketio_loader.js:194:20] reason -> transport close
+2024-06-04 15:27:59.044 - DEBUG: [database_mysql.js:393:28] SQL ->             update chat.connection             set disconnect_date = now(),                 presence = 'off',                 modify_date = now()             where                 socket_id = 'X8p1CC3fsdoIVV5SAAAB'
+2024-06-04 15:27:59.045 - DEBUG: [socketio_loader.js:209:24] chat_save_disconnect sql executed.
+2024-06-04 15:28:03.066 - DEBUG: [socketio_loader.js:169:16] connection -> {"address":"::ffff:192.168.236.77","family":"IPv6","port":57662}
+2024-06-04 15:28:03.067 - DEBUG: [socketio_loader.js:170:16] socket id -> lxxmflyAJ-kS1mTvAAAC
+2024-06-04 15:28:03.081 - DEBUG: [database_mysql.js:393:28] SQL ->             insert into chat.connection                 (socket_id, namespace, presence)             values                 ('lxxmflyAJ-kS1mTvAAAC', '::_8001_8832', 'off')
+2024-06-04 15:28:03.082 - DEBUG: [socketio_loader.js:185:20] chat_save_connection sql executed.
+2024-06-04 15:28:03.082 - DEBUG: [socketio_loader.js:257:9] Count of event handler in socketio_config  : 6
+2024-06-04 15:28:03.082 - DEBUG: [socketio_loader.js:264:16] filename #0 : C:\root\chang\ubiaccess-chang\socketio\chat
+2024-06-04 15:28:03.083 - DEBUG: [chat.js:18:16] ChatHandler initialized.
+2024-06-04 15:28:03.083 - DEBUG: [socketio_loader.js:279:16] Socket.io handler loaded from chat.
+2024-06-04 15:28:03.084 - DEBUG: [socketio_loader.js:297:12] Socket.io handler registered [login] -> [login]
+2024-06-04 15:28:03.084 - DEBUG: [socketio_loader.js:264:16] filename #1 : C:\root\chang\ubiaccess-chang\socketio\chat
+2024-06-04 15:28:03.084 - DEBUG: [chat.js:18:16] ChatHandler initialized.
+2024-06-04 15:28:03.085 - DEBUG: [socketio_loader.js:279:16] Socket.io handler loaded from chat.
+2024-06-04 15:28:03.085 - DEBUG: [socketio_loader.js:297:12] Socket.io handler registered [logout] -> [logout]
+2024-06-04 15:28:03.085 - DEBUG: [socketio_loader.js:264:16] filename #2 : C:\root\chang\ubiaccess-chang\socketio\chat
+2024-06-04 15:28:03.086 - DEBUG: [chat.js:18:16] ChatHandler initialized.
+2024-06-04 15:28:03.086 - DEBUG: [socketio_loader.js:279:16] Socket.io handler loaded from chat.
+2024-06-04 15:28:03.086 - DEBUG: [socketio_loader.js:297:12] Socket.io handler registered [message] -> [message]
+2024-06-04 15:28:03.087 - DEBUG: [socketio_loader.js:264:16] filename #3 : C:\root\chang\ubiaccess-chang\socketio\groupchat
+2024-06-04 15:28:03.087 - DEBUG: [groupchat.js:18:16] GroupChatHandler initialized.
+2024-06-04 15:28:03.087 - DEBUG: [socketio_loader.js:279:16] Socket.io handler loaded from groupchat.
+2024-06-04 15:28:03.087 - DEBUG: [socketio_loader.js:297:12] Socket.io handler registered [login_group] -> [login_group]
+2024-06-04 15:28:03.088 - DEBUG: [socketio_loader.js:264:16] filename #4 : C:\root\chang\ubiaccess-chang\socketio\groupchat
+2024-06-04 15:28:03.088 - DEBUG: [groupchat.js:18:16] GroupChatHandler initialized.
+2024-06-04 15:28:03.088 - DEBUG: [socketio_loader.js:279:16] Socket.io handler loaded from groupchat.
+2024-06-04 15:28:03.088 - DEBUG: [socketio_loader.js:297:12] Socket.io handler registered [logout_group] -> [logout_group]
+2024-06-04 15:28:03.089 - DEBUG: [socketio_loader.js:264:16] filename #5 : C:\root\chang\ubiaccess-chang\socketio\groupchat
+2024-06-04 15:28:03.089 - DEBUG: [groupchat.js:18:16] GroupChatHandler initialized.
+2024-06-04 15:28:03.089 - DEBUG: [socketio_loader.js:279:16] Socket.io handler loaded from groupchat.
+2024-06-04 15:28:03.089 - DEBUG: [socketio_loader.js:297:12] Socket.io handler registered [message_group] -> [message_group]
+2024-06-04 15:28:03.090 - DEBUG: [socketio_util.js:185:12] sendResponse called.
+2024-06-04 15:28:04.467 - DEBUG: [socketio_loader.js:169:16] connection -> {"address":"::ffff:192.168.236.15","family":"IPv6","port":34310}
+2024-06-04 15:28:04.468 - DEBUG: [socketio_loader.js:170:16] socket id -> b_s7hu4NzGtn3YTOAAAD
+2024-06-04 15:28:04.481 - DEBUG: [database_mysql.js:393:28] SQL ->             insert into chat.connection                 (socket_id, namespace, presence)             values                 ('b_s7hu4NzGtn3YTOAAAD', '::_8001_8832', 'off')
+2024-06-04 15:28:04.482 - DEBUG: [socketio_loader.js:185:20] chat_save_connection sql executed.
+2024-06-04 15:28:04.483 - DEBUG: [socketio_loader.js:257:9] Count of event handler in socketio_config  : 6
+2024-06-04 15:28:04.483 - DEBUG: [socketio_loader.js:264:16] filename #0 : C:\root\chang\ubiaccess-chang\socketio\chat
+2024-06-04 15:28:04.483 - DEBUG: [chat.js:18:16] ChatHandler initialized.
+2024-06-04 15:28:04.484 - DEBUG: [socketio_loader.js:279:16] Socket.io handler loaded from chat.
+2024-06-04 15:28:04.485 - DEBUG: [socketio_loader.js:297:12] Socket.io handler registered [login] -> [login]
+2024-06-04 15:28:04.485 - DEBUG: [socketio_loader.js:264:16] filename #1 : C:\root\chang\ubiaccess-chang\socketio\chat
+2024-06-04 15:28:04.485 - DEBUG: [chat.js:18:16] ChatHandler initialized.
+2024-06-04 15:28:04.485 - DEBUG: [socketio_loader.js:279:16] Socket.io handler loaded from chat.
+2024-06-04 15:28:04.486 - DEBUG: [socketio_loader.js:297:12] Socket.io handler registered [logout] -> [logout]
+2024-06-04 15:28:04.486 - DEBUG: [socketio_loader.js:264:16] filename #2 : C:\root\chang\ubiaccess-chang\socketio\chat
+2024-06-04 15:28:04.486 - DEBUG: [chat.js:18:16] ChatHandler initialized.
+2024-06-04 15:28:04.486 - DEBUG: [socketio_loader.js:279:16] Socket.io handler loaded from chat.
+2024-06-04 15:28:04.487 - DEBUG: [socketio_loader.js:297:12] Socket.io handler registered [message] -> [message]
+2024-06-04 15:28:04.487 - DEBUG: [socketio_loader.js:264:16] filename #3 : C:\root\chang\ubiaccess-chang\socketio\groupchat
+2024-06-04 15:28:04.487 - DEBUG: [groupchat.js:18:16] GroupChatHandler initialized.
+2024-06-04 15:28:04.488 - DEBUG: [socketio_loader.js:279:16] Socket.io handler loaded from groupchat.
+2024-06-04 15:28:04.488 - DEBUG: [socketio_loader.js:297:12] Socket.io handler registered [login_group] -> [login_group]
+2024-06-04 15:28:04.488 - DEBUG: [socketio_loader.js:264:16] filename #4 : C:\root\chang\ubiaccess-chang\socketio\groupchat
+2024-06-04 15:28:04.488 - DEBUG: [groupchat.js:18:16] GroupChatHandler initialized.
+2024-06-04 15:28:04.489 - DEBUG: [socketio_loader.js:279:16] Socket.io handler loaded from groupchat.
+2024-06-04 15:28:04.489 - DEBUG: [socketio_loader.js:297:12] Socket.io handler registered [logout_group] -> [logout_group]
+2024-06-04 15:28:04.489 - DEBUG: [socketio_loader.js:264:16] filename #5 : C:\root\chang\ubiaccess-chang\socketio\groupchat
+2024-06-04 15:28:04.489 - DEBUG: [groupchat.js:18:16] GroupChatHandler initialized.
+2024-06-04 15:28:04.490 - DEBUG: [socketio_loader.js:279:16] Socket.io handler loaded from groupchat.
+2024-06-04 15:28:04.490 - DEBUG: [socketio_loader.js:297:12] Socket.io handler registered [message_group] -> [message_group]
+2024-06-04 15:28:04.490 - DEBUG: [socketio_util.js:185:12] sendResponse called.
+2024-06-04 15:29:02.149 - DEBUG: [socketio_loader.js:192:20] disconnect called. -> lxxmflyAJ-kS1mTvAAAC
+2024-06-04 15:29:02.150 - DEBUG: [socketio_loader.js:194:20] reason -> transport close
+2024-06-04 15:29:02.163 - DEBUG: [database_mysql.js:393:28] SQL ->             update chat.connection             set disconnect_date = now(),                 presence = 'off',                 modify_date = now()             where                 socket_id = 'lxxmflyAJ-kS1mTvAAAC'
+2024-06-04 15:29:02.164 - DEBUG: [socketio_loader.js:209:24] chat_save_disconnect sql executed.
+2024-06-04 15:30:02.069 - DEBUG: [socketio_loader.js:192:20] disconnect called. -> b_s7hu4NzGtn3YTOAAAD
+2024-06-04 15:30:02.070 - DEBUG: [socketio_loader.js:194:20] reason -> transport close
+2024-06-04 15:30:02.088 - DEBUG: [database_mysql.js:393:28] SQL ->             update chat.connection             set disconnect_date = now(),                 presence = 'off',                 modify_date = now()             where                 socket_id = 'b_s7hu4NzGtn3YTOAAAD'
+2024-06-04 15:30:02.089 - DEBUG: [socketio_loader.js:209:24] chat_save_disconnect sql executed.
+2024-06-04 15:41:21.806 - INFO: [index.js:90:12] service loader called.
+2024-06-04 15:41:21.842 - INFO: [index.js:94:12] controller loader called.
+2024-06-04 15:41:21.844 - DEBUG: [external_loader.js:33:9] external_loader called.
+2024-06-04 15:41:21.845 - DEBUG: [external_loader.js:36:16] No external configuration.
+2024-06-04 15:41:22.408 - INFO: [index.js:199:20] Http Server started.
+2024-06-04 15:41:22.409 - INFO: [index.js:210:16] Base URL -> http://localhost:8001
+2024-06-04 15:41:22.410 - INFO: [index.js:215:16] Namespace -> ::_8001_16624
+2024-06-04 15:41:22.520 - DEBUG: [socketio_loader.js:87:9] socketio_loader.load called.
+2024-06-04 15:41:22.522 - DEBUG: [socketio_loader.js:97:16] read namespace file -> ::_8001_8832
+2024-06-04 15:41:22.574 - INFO: [index.js:223:20] socket.io loader called.
+2024-06-04 15:41:22.594 - DEBUG: [database_mysql.js:61:16] database SQL file loaded.
+2024-06-04 15:41:22.688 - DEBUG: [database_mysql.js:393:28] SQL ->             update chat.connection             set presence = 'off',                 modify_date = now()             where                 namespace = '::_8001_8832'
+2024-06-04 15:41:22.692 - DEBUG: [socketio_loader.js:114:20] chat_reset_presence sql executed.
+2024-06-04 15:41:22.736 - DEBUG: [socketio_loader.js:132:16] namespace file saved to -> ./socketio.pid
+2024-06-04 15:41:22.741 - DEBUG: [socketio_loader.js:133:16] write namespace file -> ::_8001_16624
+2024-06-04 15:41:22.743 - INFO: [socketio_loader.js:141:12] socket.io service started.
+2024-06-04 15:41:22.748 - DEBUG: [socketio_loader.js:155:12] redis subscribed -> myapp_message
+2024-06-04 15:41:36.053 - INFO: [index.js:90:12] service loader called.
+2024-06-04 15:41:36.092 - INFO: [index.js:94:12] controller loader called.
+2024-06-04 15:41:36.093 - DEBUG: [external_loader.js:33:9] external_loader called.
+2024-06-04 15:41:36.096 - DEBUG: [external_loader.js:36:16] No external configuration.
+2024-06-04 15:41:36.699 - INFO: [index.js:199:20] Http Server started.
+2024-06-04 15:41:36.717 - INFO: [index.js:210:16] Base URL -> http://localhost:8001
+2024-06-04 15:41:36.726 - INFO: [index.js:215:16] Namespace -> ::_8001_11440
+2024-06-04 15:41:36.847 - DEBUG: [socketio_loader.js:87:9] socketio_loader.load called.
+2024-06-04 15:41:36.848 - DEBUG: [socketio_loader.js:97:16] read namespace file -> ::_8001_16624
+2024-06-04 15:41:36.903 - INFO: [index.js:223:20] socket.io loader called.
+2024-06-04 15:41:36.920 - DEBUG: [database_mysql.js:61:16] database SQL file loaded.
+2024-06-04 15:41:37.027 - DEBUG: [database_mysql.js:393:28] SQL ->             update chat.connection             set presence = 'off',                 modify_date = now()             where                 namespace = '::_8001_16624'
+2024-06-04 15:41:37.046 - DEBUG: [socketio_loader.js:114:20] chat_reset_presence sql executed.
+2024-06-04 15:41:37.092 - DEBUG: [socketio_loader.js:132:16] namespace file saved to -> ./socketio.pid
+2024-06-04 15:41:37.093 - DEBUG: [socketio_loader.js:133:16] write namespace file -> ::_8001_11440
+2024-06-04 15:41:37.096 - INFO: [socketio_loader.js:141:12] socket.io service started.
+2024-06-04 15:41:37.098 - DEBUG: [socketio_loader.js:155:12] redis subscribed -> myapp_message
+2024-06-04 15:41:59.398 - INFO: [index.js:90:12] service loader called.
+2024-06-04 15:41:59.433 - INFO: [index.js:94:12] controller loader called.
+2024-06-04 15:41:59.435 - DEBUG: [external_loader.js:33:9] external_loader called.
+2024-06-04 15:41:59.437 - DEBUG: [external_loader.js:36:16] No external configuration.
+2024-06-04 15:42:00.111 - INFO: [index.js:199:20] Http Server started.
+2024-06-04 15:42:00.125 - INFO: [index.js:210:16] Base URL -> http://localhost:8001
+2024-06-04 15:42:00.164 - INFO: [index.js:215:16] Namespace -> ::_8001_10860
+2024-06-04 15:42:00.339 - DEBUG: [socketio_loader.js:87:9] socketio_loader.load called.
+2024-06-04 15:42:00.353 - DEBUG: [socketio_loader.js:97:16] read namespace file -> ::_8001_11440
+2024-06-04 15:42:00.436 - INFO: [index.js:223:20] socket.io loader called.
+2024-06-04 15:42:00.468 - DEBUG: [database_mysql.js:61:16] database SQL file loaded.
+2024-06-04 15:42:00.597 - DEBUG: [database_mysql.js:393:28] SQL ->             update chat.connection             set presence = 'off',                 modify_date = now()             where                 namespace = '::_8001_11440'
+2024-06-04 15:42:00.603 - DEBUG: [socketio_loader.js:114:20] chat_reset_presence sql executed.
+2024-06-04 15:42:00.643 - DEBUG: [socketio_loader.js:132:16] namespace file saved to -> ./socketio.pid
+2024-06-04 15:42:00.650 - DEBUG: [socketio_loader.js:133:16] write namespace file -> ::_8001_10860
+2024-06-04 15:42:00.654 - INFO: [socketio_loader.js:141:12] socket.io service started.
+2024-06-04 15:42:00.659 - DEBUG: [socketio_loader.js:155:12] redis subscribed -> myapp_message
