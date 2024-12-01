@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html>
+	<head>
+        <!-- 모바일 단말을 위한 메타정보 -->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, viewport-fit=cover">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+        <meta name="theme-color" content="#2196f3">
+        <meta http-equiv="Content-Security-Policy" content="default-src * 'self' 'unsafe-inline' 'unsafe-eval' data: gap:">
+
+		<title>다윈전광판</title>
+
+        <style>
+                 
+            * {
+                margin:0;
+                padding:0;
+                box-sizing: border-box;
+            }
+
+            html, body {
+                width: 100%;
+                height: 100%;
+            }
+
+            .container {
+                width: 100%;
+                height: 100%;
+            }
+ 
+            #targetImg {
+                overflow-x: auto;
+            }
+
+        </style>
+
+		<script src="/jquery-3.4.1.min.js"></script>    
+		<script src="/socket.io/socket.io.js"></script>
+        
+        <script>
+             
+
+            //===== 콘트롤러로부터 전달받은 변수 =====//
+
+            // deptId
+            var deptId = '<%= deptId %>';
+ 
+            // deptName
+            var deptName = '<%= deptName %>';
+
+            // agentIdList
+            var agentIdList = '<%= agentIdList %>';
+
+            // agentNameList
+            var agentNameList = '<%= agentNameList %>';
+
+            // roomIdList
+            var roomIdList = '<%= roomIdList %>';
+
+            // roomNameList
+            var roomNameList = '<%= roomNameList %>';
+
+            // targetUnit
+            var targetUnit = '<%= targetUnit %>';
+
+            // targetAgentId
+            var targetAgentId = '<%= targetAgentId %>';
+
+            // targetRoomId
+            var targetRoomId = '<%= targetRoomId %>';
+
+            // targetAgentName
+            var targetAgentName = '<%= targetAgentName %>';
+
+            // targetRoomName
+            var targetRoomName = '<%= targetRoomName %>';
+
+            //================================//
+
+ 
+            // socket 객체 
+            var socket;
+            
+            // 시퀀스를 위한 코드
+            var seqCode = 0;
+
+            // 경과시간 계산을 위한 변수            
+            var oldTime = 0;
+            var timeInterval = null;
+
+
+         	// document ready
+            $(function() {
+
+                // 1. 서버 연결
+                connectToServer();
+
+            });
+            
+			// function for connection
+            function connectToServer() {
+
+                socket = io({transports: ['websocket']});
+
+                // 서버 연결 시 발생하는 connect 이벤트 처리
+                socket.on('connect', function() {
+                	println('Server is connected to home server.');
+                    
+                });
+
+                // message 이벤트 처리 함수 등록
+                socket.on('message_group', function(message) {
+                    console.log(JSON.stringify(message));
+
+                    println('<p>message received : ' + JSON.stringify(message) + '</p>');
+                
+                    // 푸시 메시지를 받았을 때 업데이트
+                    if (message.command == 'sboard') {
+                        onSBoardResponse(message);
+                        
+                    }
+                });
+
+                // response 이벤트 처리 함수 등록
+                socket.on('response', function(response) {
+                    console.log(JSON.stringify(response));
+                    println('response received : ' + response.command + ', ' + response.code + ', ' + response.message);
+                
+                    if (response.command == 'initialized') {
+                        println('socket id -> ' + response.userid);
+
+                        // 서버 연결 및 초기화에 성공했으므로 로그인 요청
+                        requestLogin();
+
+                    } else if (response.command == 'login_group') {
+                        onLoginResponse(response);
+                    }
+                });
+                
+                // 서버 연결 시 발생하는 disconnect 이벤트 처리
+                socket.on('disconnect', function() {
+                    println('Server disconnected.');
+                });
+
+            }
+            
+            /**
+             * 로그인 요청
+             */
+            function requestLogin() {
+                
+                var requestCode = generateRequestCode();
+
+                var output;
+                
+                if (typeof(targetUnit) == 'undefined' || targetUnit == 'room') {
+                    output = {requestCode:requestCode, userId:'', roomId:targetRoomId};
+                } else if (targetUnit == 'agent') {
+                    output = {requestCode:requestCode, userId:'', roomId:targetAgentId};
+                }
+                console.log('OUTPUT : ' + JSON.stringify(output));
+
+                if (socket == undefined) {
+                    alert('Server is not connected. Connect to the server first.');
+                    return;
+                }
+
+                socket.emit('login_group', output);
+            }
+
+            function onLoginResponse(response) {
+                if (response.code == '200') {
+                    console.log('로그인 성공');
+
+                    // img 태그에 이미지 설정
+                    var boardImagePath = '/sboard/' + targetAgentId + '.png';
+                    $('#targetImg').attr('src', boardImagePath + '?timestamp=' + new Date().getTime());
+                
+                    
+                    // 상단 타이틀 부분 업데이트 경과시간
+                    processTimeInterval();
+  
+                }
+            }
+
+            function onSBoardResponse(message) {
+                console.log('메시지 수신함');
+
+                // 이미지 업데이트
+                let boardImagePath = '/sboard/' + targetAgentId + '.png';
+                $('#targetImg').attr('src', boardImagePath + '?timestamp=' + new Date().getTime());
+
+
+                // 상단 타이틀 부분 업데이트 경과시간
+                processTimeInterval();
+
+            }
+
+            /**
+             * 상단 타이틀 부분 업데이트 경과시간 처리
+             */
+            function processTimeInterval() {
+
+                // 업데이트 경과시간 표시
+                if (timeInterval) {
+                    clearInterval(timeInterval);
+                }
+
+                oldTime = new Date().getTime();
+                $('#elapsedOutput').text('업데이트됨');
+
+                timeInterval = setInterval(function() {
+                    var curTime = timeSince(oldTime);
+                    $('#elapsedOutput').text(curTime + '전 업데이트됨');
+                }, 10000);
+                
+            }
+
+
+            /**
+             * 로그아웃 요청
+             */
+            function requestLogout() {
+                var id = 'test01';
+                var requestCode = generateRequestCode();
+
+                
+                var output;
+                
+                if (typeof(targetUnit) == 'undefined' || targetUnit == 'room') {
+                    output = {requestCode:requestCode, userId:'', roomId:targetRoomId};
+                } else if (targetUnit == 'agent') {
+                    output = {requestCode:requestCode, userId:'', roomId:targetAgentId};
+                }
+                console.log('OUTPUT : ' + JSON.stringify(output));
+
+
+                if (socket == undefined) {
+                    alert('Server is not connected. Connect to the server first.');
+                    return;
+                }
+
+                socket.emit('logout_group', output);
+            }
+
+            /*
+             * 요청 코드 생성
+             */
+            function generateRequestCode() {
+                var date = new Date();
+
+                var seqCodeStr = getSeqCode();
+ 
+                var components = [
+                    date.getFullYear(),
+                    ("0" + (date.getMonth() + 1)).slice(-2),
+                    date.getDate(),
+                    date.getHours(),
+                    date.getMinutes(),
+                    date.getSeconds(),
+                    date.getMilliseconds(),
+                    seqCodeStr
+                ];
+ 
+                var curCode = components.join("");
+                return curCode;
+            }
+
+            /*
+             * Get sequence code (01 ~ 99)
+             */
+            function getSeqCode() {
+                seqCode += 1;
+                if (seqCode > 99) {
+                    seqCode = 0;
+                }
+                var seqCodeStr = String(seqCode);
+                if (seqCodeStr.length == 1) {
+                    seqCodeStr = '0' + seqCodeStr;
+                }
+
+                return seqCodeStr;
+            }
+
+            
+			function println(data) {
+				console.log(data);
+				$('#result').append('<p>' + data + '</p>');
+            }
+            
+
+            /**
+             * 상단 타이틀의 전광판 콤보박스 선택 시 호출
+             */
+            function onTargetSelected() {
+                var selectedValue = $('#targetSelect').val();
+                var selectedText = $('#targetSelect option:checked').text();
+
+                var selectedArray = selectedValue.split(',');
+                if (selectedArray.length > 1) {
+                    var curUnit = selectedArray[0];
+                    var curId = selectedArray[1];
+
+                    if (curUnit == 'agent') {
+                        var url = '/sboard1.do?' +
+                                  'title=' + selectedText +
+                                  '&agentId=' + curId + 
+                                  '&deptId=' + deptId;
+                        location.href = url;
+                    } else if (curUnit == 'room') {
+                        var url = '/sboard2.do?' +
+                                  'title=' + selectedText +
+                                  '&roomId=' + curId + 
+                                  '&deptId=' + deptId;
+                        location.href = url;
+                    } else {
+                        console.error('unknown unit : ' + curUnit);
+                    }
+                } else {
+                    console.error('selected value is not valid.');
+                }
+                
+            }
+
+            /**
+             * 업데이트 경과시간 계산
+             */
+            function timeSince(past) {
+                var now = new Date().getTime();
+                var seconds = Math.floor((now - past) / 1000);
+                //console.log('now : ' + now + ', past : ' + past + ', elapsed : ' + seconds);
+
+                var interval = Math.floor(seconds / 31536000);
+                if (interval > 0) {
+                    return interval + "년";
+                }
+
+                interval = Math.floor(seconds / 2592000);
+                if (interval > 0) {
+                    return interval + "개월";
+                }
+
+                interval = Math.floor(seconds / 86400);
+                if (interval > 0) {
+                    return interval + "일";
+                }
+
+                interval = Math.floor(seconds / 3600);
+                if (interval > 0) {
+                    const remained = (seconds % 3600) / 60;
+                    if (remained == 0) {
+                        return interval + "시간";
+                    } else {
+                        return interval + "시간 " + Math.floor(remained) + "분";
+                    }
+                }
+                
+                interval = Math.floor(seconds / 60);
+                if (interval > 0) {
+                    const remained = seconds % 60;
+                    if (remained == 0) {
+                        return interval + "분";
+                    } else {
+                        return interval + "분 " + Math.floor(remained) + "초";
+                    }
+                }
+
+                return Math.floor(seconds) + "초";
+            }
+
+        </script>
+	</head>
+<body>
+    
+    <div class="container">
+        <div class="titleBar">
+            <span id="titleOutput"><%= targetAgentName %> [ON AIR]</span>
+            <span id="elapsedOutput">업데이트됨</span>
+            <select id="targetSelect" name="targetSelect" onchange="onTargetSelected()">
+                    <option value="" selected disabled>전광판 선택</option> 
+
+                <% for (let i = 0; i < agentIdList.length; i++) { %>
+                    <option value="agent,<%= agentIdList[i] %>"><%= agentNameList[i] %></option>
+                <% } %>
+
+                <% for (let i = 0; i < roomIdList.length; i++) { %>
+                    <option value="room,<%= roomIdList[i] %>"><%= roomNameList[i] %></option>
+                <% } %>
+
+                <!--
+                <option value="" selected disabled>전광판 선택</option>              
+                <option value="agent,sba_smc_der_0001_test">대기실 앞 전광판</option>
+                <option value="room,DDER001">1번방</option>
+                <option value="room,DDER002">2번방</option>
+                <option value="room,DDER003">3번방</option>
+                <option value="room,DDER004">4번방</option>
+                -->
+            </select>
+        </div>
+        <img id="targetImg" width="100%">
+    </div>
+        
+</body>
+</html>

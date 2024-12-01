@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html class="no-js" itemscope="itemscope" itemtype="http://schema.org/WebPage" lang="ko">
+<head>
+	<meta charset="utf-8">
+	<title>전광판 | 삼성서울병원</title>
+	<meta name="viewport" content="width=device-width">
+	 
+	<link rel="stylesheet" href="/sboard/css/normalize.css">
+	<link rel="stylesheet" href="/sboard/css/style.css" media="all">
+	<link rel="stylesheet" href="/sboard/css/ui-smc.css" media="all">
+ 
+	<link rel="stylesheet" href="/sboard/css/new_health_out.css" media="all">
+ 
+	
+	<script src="/jquery-3.4.1.min.js"></script>    
+	<script src="/socket.io/socket.io.js"></script>
+	
+
+	<script>
+			 
+		//===== 콘트롤러로부터 전달받은 변수 =====//
+
+		// deptId
+		var deptId = '<%= deptId %>';
+
+		// user id
+		var userId = '<%= userId %>';
+
+		// room id
+		var roomId = '<%= roomId %>';
+
+        //================================//
+
+
+		// socket 객체 
+		var socket;
+		
+		// 시퀀스를 위한 코드
+		var seqCode = 0;
+
+		// 경과시간 계산을 위한 변수            
+		var oldTime = 0;
+		var timeInterval = null;
+
+
+		 // document ready
+		$(function() {
+
+			// 1. 서버 연결
+			connectToServer();
+
+		});
+		
+		// function for connection
+		function connectToServer() {
+
+			socket = io({transports: ['websocket']});
+
+			// 서버 연결 시 발생하는 connect 이벤트 처리
+			socket.on('connect', function() {
+				println('Server is connected to home server.');
+				
+			});
+
+			// message 이벤트 처리 함수 등록
+			socket.on('message_group', function(message) {
+				console.log(JSON.stringify(message));
+
+				println('<p>message received : ' + JSON.stringify(message) + '</p>');
+
+				// 푸시 메시지를 받았을 때 업데이트
+				if (message.command == 'sboard') {
+					onSBoardResponse(message);
+					
+				}
+			});
+
+			// response 이벤트 처리 함수 등록
+			socket.on('response', function(response) {
+				console.log(JSON.stringify(response));
+				println('response received : ' + response.command + ', ' + response.code + ', ' + response.message);
+
+				if (response.command == 'initialized') {
+					println('socket id -> ' + response.userid);
+
+					// 서버 연결 및 초기화에 성공했으므로 로그인 요청
+					requestLogin();
+
+				} else if (response.command == 'login_group') {
+					onLoginResponse(response);
+				}
+			});
+
+			// 서버 연결 시 발생하는 disconnect 이벤트 처리
+			socket.on('disconnect', function() {
+				println('Server disconnected.');
+			});
+
+		}
+		
+		/**
+		 * 로그인 요청
+		 */
+		function requestLogin() {
+			
+			var requestCode = generateRequestCode();
+
+			var output = {requestCode:requestCode, userId:userId, roomId:roomId};
+			console.log('OUTPUT : ' + JSON.stringify(output));
+
+			if (socket == undefined) {
+				alert('Server is not connected. Connect to the server first.');
+				return;
+			}
+
+			socket.emit('login_group', output);
+		}
+
+		function onLoginResponse(response) {
+			console.log('response -> ' + response);
+
+			if (response.code == '200') {
+				console.log('로그인 성공');
+
+				// 상단 타이틀 부분 업데이트 경과시간
+				processTimeInterval();
+
+			}
+		}
+
+		function onSBoardResponse(message) {
+
+			let context = {};
+			context.roomId = roomId;
+			context.roomName = '';
+			context.doctorName = '';
+			context.delayTime = '';
+			context.delayReason = '';
+			context.ongoingName = '';
+			context.waitingName1 = '';
+			context.waitingName2 = '';
+			context.waitingName3 = '';
+			context.waitingName4 = '';
+			context.waitingName5 = '';
+
+			console.log('type -> ' + typeof(message.data));
+			const paramData = JSON.parse(message.data);
+
+			if (paramData[roomId]) {
+				console.log('data found');
+				const dataObj = paramData[roomId];
+
+				if (dataObj.mnc_dispush_000) {
+					context.roomName = dataObj.mnc_dispush_000.exrmNm;
+					context.doctorName = dataObj.mnc_dispush_000.mddrNm;
+					context.delayTime = dataObj.mnc_dispush_000.waitRsrvMi;
+					context.delayReason = dataObj.mnc_dispush_000.elbdDereCtn;
+
+					if (dataObj.mnc_dispush_000.mns_dispush_000) {
+						if (Array.isArray(dataObj.mnc_dispush_000.mns_dispush_000) && dataObj.mnc_dispush_000.mns_dispush_000.length > 0) {
+							context.ongoingName = dataObj.mnc_dispush_000.mns_dispush_000[0].ptntNm;
+						}
+					}
+					
+					if (dataObj.mnc_dispush_000.mns_dispush_001) {
+						if (Array.isArray(dataObj.mnc_dispush_000.mns_dispush_001) && dataObj.mnc_dispush_000.mns_dispush_001.length > 0) {
+							context.waitingName1 = dataObj.mnc_dispush_000.mns_dispush_001[0].ptntNm;
+
+							if (dataObj.mnc_dispush_000.mns_dispush_001.length > 1) {
+								context.waitingName2 = dataObj.mnc_dispush_000.mns_dispush_001[1].ptntNm;
+							}
+
+							if (dataObj.mnc_dispush_000.mns_dispush_001.length > 2) {
+								context.waitingName3 = dataObj.mnc_dispush_000.mns_dispush_001[2].ptntNm;
+							}
+
+							if (dataObj.mnc_dispush_000.mns_dispush_001.length > 3) {
+								context.waitingName4 = dataObj.mnc_dispush_000.mns_dispush_001[3].ptntNm;
+							}
+
+							if (dataObj.mnc_dispush_000.mns_dispush_001.length > 4) {
+								context.waitingName5 = dataObj.mnc_dispush_000.mns_dispush_001[4].ptntNm;
+							}
+						}
+					}
+
+				}
+
+			} else {
+				console.log('data not found');
+			}
+
+			console.log('context -> ' + JSON.stringify(context));
+
+			// 화면 태그 업데이트
+			if (context.delayTime.length < 1) {
+				$('#delayTime').text('');
+			} else {
+				$('#delayTime').text(context.delayTime + '분');
+			}
+
+			$('#delayReason').text(context.delayReason);
+
+			if (context.ongoingName.length < 1) {
+				$('#ongoingName').text('');
+			} else {
+				$('#ongoingName').text((context.ongoingName.substring(0, 2) + '♧'));
+			}
+
+			if (context.waitingName1.length < 1) {
+				$('#waitingName1').text('');
+			} else {
+				$('#waitingName1').text((context.waitingName1.substring(0, 2) + '♧'));
+			}
+
+			if (context.waitingName2.length < 1) {
+				$('#waitingName2').text('');
+			} else {
+				$('#waitingName2').text((context.waitingName2.substring(0, 2) + '♧'));
+			}
+
+			if (context.waitingName3.length < 1) {
+				$('#waitingName3').text('');
+			} else {
+				$('#waitingName3').text((context.waitingName3.substring(0, 2) + '♧'));
+			}
+			
+			if (context.waitingName4.length < 1) {
+				$('#waitingName4').text('');
+			} else {
+				$('#waitingName4').text((context.waitingName4.substring(0, 2) + '♧'));
+			}
+			
+		
+			// 상단 타이틀 부분 업데이트 경과시간
+			processTimeInterval();
+
+		}
+
+
+		/**
+		 * 상단 타이틀 부분 업데이트 경과시간 처리
+		 */
+			function processTimeInterval() {
+
+			// 업데이트 경과시간 표시
+			if (timeInterval) {
+				clearInterval(timeInterval);
+			}
+
+			oldTime = new Date().getTime();
+			$('#elapsedOutput').text('방금 업데이트됨');
+
+			timeInterval = setInterval(function() {
+				var curTime = timeSince(oldTime);
+				$('#elapsedOutput').text(curTime + '전 업데이트됨');
+			}, 10000);
+
+		}
+
+
+
+
+		/**
+		 * 로그아웃 요청
+		 */
+		function requestLogout() {
+			var id = 'test01';
+			var requestCode = generateRequestCode();
+
+			var output = {requestCode:requestCode, userId:userId, roomId:roomId};
+			console.log('OUTPUT : ' + JSON.stringify(output));
+
+			if (socket == undefined) {
+				alert('Server is not connected. Connect to the server first.');
+				return;
+			}
+
+			socket.emit('logout_group', output);
+		}
+
+		/*
+		 * 요청 코드 생성
+		 */
+		function generateRequestCode() {
+			var date = new Date();
+
+			var seqCodeStr = getSeqCode();
+
+			var components = [
+				date.getFullYear(),
+				("0" + (date.getMonth() + 1)).slice(-2),
+				date.getDate(),
+				date.getHours(),
+				date.getMinutes(),
+				date.getSeconds(),
+				date.getMilliseconds(),
+				seqCodeStr
+			];
+
+			var curCode = components.join("");
+			return curCode;
+		}
+
+		/*
+		 * Get sequence code (01 ~ 99)
+		 */
+		function getSeqCode() {
+			seqCode += 1;
+			if (seqCode > 99) {
+				seqCode = 0;
+			}
+			var seqCodeStr = String(seqCode);
+			if (seqCodeStr.length == 1) {
+				seqCodeStr = '0' + seqCodeStr;
+			}
+
+			return seqCodeStr;
+		}
+
+		
+		function println(data) {
+			console.log(data);
+			$('#result').append('<p>' + data + '</p>');
+		}
+
+
+		/**
+		 * 업데이트 경과시간 계산
+		 */
+			function timeSince(past) {
+			var now = new Date().getTime();
+			var seconds = Math.floor((now - past) / 1000);
+			//console.log('now : ' + now + ', past : ' + past + ', elapsed : ' + seconds);
+
+			var interval = Math.floor(seconds / 31536000);
+			if (interval > 0) {
+				return interval + "년";
+			}
+
+			interval = Math.floor(seconds / 2592000);
+			if (interval > 0) {
+				return interval + "개월";
+			}
+
+			interval = Math.floor(seconds / 86400);
+			if (interval > 0) {
+				return interval + "일";
+			}
+
+			interval = Math.floor(seconds / 3600);
+			if (interval > 0) {
+				const remained = (seconds % 3600) / 60;
+				if (remained == 0) {
+					return interval + "시간";
+				} else {
+					return interval + "시간 " + Math.floor(remained) + "분";
+				}
+			}
+			
+			interval = Math.floor(seconds / 60);
+			if (interval > 0) {
+				const remained = seconds % 60;
+				if (remained == 0) {
+					return interval + "분";
+				} else {
+					return interval + "분 " + Math.floor(remained) + "초";
+				}
+			}
+
+			return Math.floor(seconds) + "초";
+		}
+
+
+		function goBack() {
+			var url = '/sboard.do?' +
+                                  'deptId=' + deptId;
+                        location.href = url;
+		}
+
+
+	</script>
+
+</head>
+<body style="background-color:#f2f3f7">
+
+	<div data-role="page" data-theme="n">
+	
+		<div data-role="content" id="body-area">
+			
+			<!-- 컨텐츠 영역 -->
+			<section class="popup-cont">
+				<div class="layer-popup">
+					<!-- 팝업 컨텐츠 영역 -->
+					<div class="popup_title_text">  
+						<h1><%= title %></h1>
+						 
+					</div>
+					
+					<section class="delay-wrap delay-wrap-view"><!-- delay-wrap-view 전광판 -->
+						<div class="box-default delay-view-box">
+							 
+							<ul class="room_and_doc">
+								<li><strong>진료실</strong><p><%= roomName %></p></li>
+								<li><strong>담당의사</strong><p><%= doctorName %></p></li>
+							</ul>
+
+							<dl class="waiting_info_part">
+								<dt>진료 중이신 분</dt>
+								<% if (typeof(ongoingName) == 'undefined' || ongoingName.length < 1) { %>
+									<dd><strong id="ongoingName"></strong></dd> 
+								<% } else { %>	
+									<dd><strong id="ongoingName"><%= (ongoingName.substring(0, 2) + '♧') %></strong></dd> 
+								<% } %>	
+							</dl>
+							<dl class="waiting_info_part waiting_info_list">
+								<dt>여기서<br />기다리실 분</dt>
+								<dd>
+									<ul>
+										<% if (typeof(waitingName1) == 'undefined' || waitingName1.length < 1) { %>
+											<li class="other"><span id="waitingName1"></span></li> 
+										<% } else { %>	
+											<li class="other"><span id="waitingName1"><%= (waitingName1.substring(0, 2) + '♧') %></span></li> 
+										<% } %>	
+
+										<% if (typeof(waitingName2) == 'undefined' || waitingName2.length < 1) { %>
+											<li class="other"><span id="waitingName2"></span></li> 
+										<% } else { %>	
+											<li class="other"><span id="waitingName2"><%= (waitingName2.substring(0, 2) + '♧') %></span></li> 
+										<% } %>	
+
+										<% if (typeof(waitingName3) == 'undefined' || waitingName3.length < 1) { %>
+											<li class="other"><span id="waitingName3"></span></li> 
+										<% } else { %>	
+											<li class="other"><span id="waitingName3"><%= (waitingName3.substring(0, 2) + '♧') %></span></li> 
+										<% } %>	
+										
+										<% if (typeof(waitingName4) == 'undefined' || waitingName4.length < 1) { %>
+											<li class="other"><span id="waitingName4"></span></li> 
+										<% } else { %>	
+											<li class="other"><span id="waitingName4"><%= (waitingName4.substring(0, 2) + '♧') %></span></li> 
+										<% } %>	
+									</ul>
+							 
+								</dd>
+							</dl>
+							<dl class="waiting_info_part waiting_info_time">
+								<dt>대기시간</dt>
+
+								<% if (typeof(delayTime) == 'undefined' || delayTime.length < 1) { %>
+									<dd id="delayTime"></dd>
+								<% } else { %>	
+									<dd id="delayTime"><%= (delayTime + '분') %></dd>
+								<% } %>	
+								
+							</dl>
+
+							<dl class="waiting_info_part waiting_info_cause">
+								<dt>지연사유</dt>
+								<dd id="delayReason"><%= delayReason %></dd> 
+							</dl>
+
+
+						</div>
+					 
+					 
+					
+			  
+					</section>
+
+					<div class="dept_realtime_srchlink">
+						<span id="titleOutput">[ON AIR]</span>
+            			<span id="elapsedOutput">방금 업데이트됨</span>
+					</div>
+
+					<div class="btn-area">
+						<a href="#"  onclick="goBack()" class="button button-navy">확인</a> <!-- 확인버튼 추가됨 -->
+					</div>
+					
+					<p class="closeBtn"><a href="#"  onclick="goBack()">닫기</a></p>
+					<!-- //팝업 컨텐츠 영역 -->
+				</div>
+			</section>
+			<!-- //컨텐츠 영역 -->
+			
+
+		</div>
+	</div> 
+ 
+
+</body>
+</html>
