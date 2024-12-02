@@ -14,8 +14,7 @@ class NasController {
     constructor() {
 		this.database = new Database('database_mysql');
     }
-
-	getList(req, res) {
+	get(req, res) {
 		logger.debug('NasController:get 요청됨.')
 
 		const folderPath = __dirname + '/../public/uploads';
@@ -53,6 +52,33 @@ class NasController {
 		}
 
 		util.sendRes(res, 200, 'OK', output);
+	}
+
+	delete(req, res) {
+		logger.debug('NasController:delete 요청됨.')
+		const params = param.parse(req);
+
+		const folderPath = __dirname + '/../public/uploads';
+		const filePath = `${folderPath}/${params.file}`;
+
+		try {
+			// 파일 존재 여부 확인
+			if (fs.existsSync(filePath)) {
+				// 파일 삭제
+				fs.unlinkSync(filePath);
+				logger.debug(`파일 삭제 완료: ${params.file}`);
+
+				// 응답 전송
+				util.sendRes(res, 200, 'OK', { message: `파일이 삭제되었습니다. ${params.file}` });
+			} else {
+				// 파일이 없을 경우 에러 처리
+				logger.error(`파일이 존재하지 않음: ${params.file}`);
+				util.sendError(res, 404, `파일을 찾을 수 없습니다: ${params.file}`);
+			}
+		} catch (err) {
+			logger.error(`파일 삭제 중 오류 발생: ${err}`);
+			util.sendError(res, 500, `파일 삭제 중 오류 발생: ${err}`);
+		}
 	}
 
 	upload(req, res) {
