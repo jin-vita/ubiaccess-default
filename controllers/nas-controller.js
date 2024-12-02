@@ -27,11 +27,21 @@ class NasController {
 			files = fileList.map((file) => {
 				const filePath = `${folderPath}/${file}`;
 				const stats = fs.statSync(filePath);
+
+				// file 형식: fileName1733097112087.png
+				// 확장자 바로 앞의 13자리 숫자를 추출
+				const match = file.match(/(\d{13})(?=\.[^.]+$)/);
+				// 매칭 실패 시 기본값 0
+				const timestamp = match ? parseInt(match[1], 10) : 0;
+
 				return {
 					name: file,
-					size: stats.size
+					size: stats.size,
+					timestamp: timestamp
 				};
 			});
+
+			files.sort((a, b) => b.timestamp - a.timestamp);
 			logger.debug('파일 리스트:', files);
 		} catch (err) {
 			util.sendError(res, 400, '폴더 읽기 실패 : ' + err);

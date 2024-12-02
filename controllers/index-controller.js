@@ -24,6 +24,16 @@ class Index {
 
 
     /**
+     * @RequestMapping(path="/upload", method="get")
+     */
+    uploadIndex(req, res) {
+        logger.debug('infoIndex called for path /upload');
+
+        util.render(req, res, 'index', {});
+    }
+
+
+    /**
      * @RequestMapping(path="/info.do", method="get")
      */
     infoIndex(req, res) {
