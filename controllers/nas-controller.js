@@ -31,7 +31,7 @@ class NasController {
 				// 확장자 바로 앞의 13자리 숫자를 추출
 				const match = file.match(/(\d{13})(?=\.[^.]+$)/);
 				// 매칭 실패 시 기본값 0
-				const timestamp = match ? parseInt(match[1], 10) : 0;
+				const timestamp = match ? parseInt(match[1], 10) : 9_999_999_999_999;
 
 				return {
 					name: file,
