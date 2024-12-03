@@ -26,17 +26,10 @@ class NasController {
 			files = fileList.map((file) => {
 				const filePath = `${folderPath}/${file}`;
 				const stats = fs.statSync(filePath);
-
-				// file 형식: fileName1733097112087.png
-				// 확장자 바로 앞의 13자리 숫자를 추출
-				const match = file.match(/(\d{13})(?=\.[^.]+$)/);
-				// 매칭 실패 시 기본값 0
-				const timestamp = match ? parseInt(match[1], 10) : 9_999_999_999_999;
-
 				return {
 					name: file,
 					size: stats.size,
-					timestamp: timestamp
+					timestamp: stats.birthtimeMs,
 				};
 			});
 
