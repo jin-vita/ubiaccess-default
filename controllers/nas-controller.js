@@ -88,8 +88,22 @@ class NasController {
 		logger.debug(JSON.stringify(req.files));
 
 		if (req.files.length > 0) {
-			var oldFile = __dirname + '/../uploads/' + req.files[0].filename;
-			var newFile = __dirname + '/../public/uploads/' + req.files[0].filename;
+			const oldFile = __dirname + '/../uploads/' + req.files[0].filename;
+			const newFileDir = __dirname + '/../public/uploads/';
+			const newFile = newFileDir + req.files[0].filename;
+
+			// Ensure the uploads directory exists
+			if (!fs.existsSync(newFileDir)) {
+				try {
+					// recursive: true 로 하위 폴더도 생성 가능
+					fs.mkdirSync(newFileDir, { recursive: true });
+					logger.debug('Uploads directory created at: ' + newFileDir);
+				} catch (err) {
+					logger.error('Error creating uploads directory: ' + err);
+					util.sendError(res, 500, 'Error creating uploads directory: ' + err);
+					return;
+				}
+			}
 
 			fs.rename(oldFile, newFile, (err) => {
 				if (err) {
