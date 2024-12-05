@@ -14,6 +14,27 @@ class NasController {
     constructor() {
 		this.database = new Database('database_mysql');
     }
+
+	getFolderSize(folderPath) {
+		let totalSize = 0;
+
+		const fileList = fs.readdirSync(folderPath);
+		fileList.forEach((file) => {
+			const filePath = `${folderPath}/${file}`;
+			const stats = fs.statSync(filePath);
+
+			if (stats.isDirectory()) {
+				// 재귀적으로 하위 폴더 크기 계산
+				totalSize += this.getFolderSize(filePath);
+			} else {
+				// 파일 크기 추가
+				totalSize += stats.size;
+			}
+		});
+
+		return totalSize;
+	}
+
 	get(req, res) {
 		logger.debug('NasController:get 요청됨.')
 
@@ -26,9 +47,17 @@ class NasController {
 			files = fileList.map((file) => {
 				const filePath = `${folderPath}/${file}`;
 				const stats = fs.statSync(filePath);
+				logger.debug('stats:', stats);
+				let type = 'file';
+				let size = stats.size;
+				if (stats.isDirectory()) {
+					type = 'folder';
+					size = this.getFolderSize(filePath);
+				}
 				return {
 					name: file,
-					size: stats.size,
+					size: size,
+					type: type,
 					timestamp: stats.birthtimeMs,
 				};
 			});
@@ -57,8 +86,15 @@ class NasController {
 		try {
 			// 파일 존재 여부 확인
 			if (fs.existsSync(filePath)) {
-				// 파일 삭제
-				fs.unlinkSync(filePath);
+				const stats = fs.statSync(filePath);
+				if (stats.isFile()) {
+					// 파일 삭제
+					fs.unlinkSync(filePath);
+				} else {
+					// 폴더 삭제 (하위 파일 포함)
+					fs.rmSync(folderPath, { recursive: true, force: true });
+					console.log('디렉토리와 하위 파일이 모두 삭제되었습니다.');
+				}
 				logger.debug(`파일 삭제 완료: ${params.file}`);
 
 				// 응답 전송
