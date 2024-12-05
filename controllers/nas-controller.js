@@ -92,7 +92,7 @@ class NasController {
 					fs.unlinkSync(filePath);
 				} else {
 					// 폴더 삭제 (하위 파일 포함)
-					fs.rmSync(folderPath, { recursive: true, force: true });
+					fs.rmSync(filePath, { recursive: true, force: true });
 					console.log('디렉토리와 하위 파일이 모두 삭제되었습니다.');
 				}
 				logger.debug(`파일 삭제 완료: ${params.file}`);
