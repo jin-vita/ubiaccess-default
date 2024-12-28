@@ -37,17 +37,29 @@ class NasController {
 
 	get(req, res) {
 		logger.debug('NasController:get 요청됨.')
+		const params = param.parse(req);
+		let directory = 'uploads';
+		if (params.directory) {
+			directory = params.directory
+		}
 
-		const folderPath = __dirname + '/../public/uploads';
+		const folderPath = __dirname + `/../public/${directory}`;
 
 		let files = [];
+		const output = {
+			body: files
+		}
+
 		try {
 			const fileList = fs.readdirSync(folderPath);
-			logger.debug('파일 리스트:', fileList);
+			if (!fileList.length) {
+				logger.debug('파일 없음');
+				util.sendRes(res, 200, 'OK', output);
+				return;
+			}
 			files = fileList.map((file) => {
 				const filePath = `${folderPath}/${file}`;
 				const stats = fs.statSync(filePath);
-				logger.debug('stats:', stats);
 				let type = 'file';
 				let size = stats.size;
 				if (stats.isDirectory()) {
@@ -69,9 +81,7 @@ class NasController {
 			return;
 		}
 
-		const output = {
-			body: files
-		}
+		output.body = files
 
 		util.sendRes(res, 200, 'OK', output);
 	}
@@ -79,8 +89,12 @@ class NasController {
 	delete(req, res) {
 		logger.debug('NasController:delete 요청됨.')
 		const params = param.parse(req);
+		let directory = 'uploads';
+		if (params.directory) {
+			directory = params.directory
+		}
 
-		const folderPath = __dirname + '/../public/uploads';
+		const folderPath = __dirname + `/../public/${directory}`;
 		const filePath = `${folderPath}/${params.file}`;
 
 		try {
@@ -112,40 +126,45 @@ class NasController {
 
 	upload(req, res) {
 		logger.debug('NasController:upload 요청됨.')
+		const params = param.parse(req);
+		let directory = 'uploads';
+		if (params.directory) {
+			directory = params.directory
+		}
 
 		logger.debug('FILES');
 		logger.debug(JSON.stringify(req.files));
 
 		if (req.files.length > 0) {
-			const oldFile = __dirname + '/../uploads/' + req.files[0].filename;
-			const newFileDir = __dirname + '/../public/uploads/';
+			const oldFile = __dirname + `/../${directory}/${req.files[0].filename}`;
+			const newFileDir = __dirname + `/../public/${directory}/`;
 			const newFile = newFileDir + req.files[0].filename;
 
-			// Ensure the uploads directory exists
+			// Ensure the [directory] directory exists
 			if (!fs.existsSync(newFileDir)) {
 				try {
 					// recursive: true 로 하위 폴더도 생성 가능
 					fs.mkdirSync(newFileDir, { recursive: true });
-					logger.debug('Uploads directory created at: ' + newFileDir);
+					logger.debug(`${directory} directory created at: ${newFileDir}`);
 				} catch (err) {
-					logger.error('Error creating uploads directory: ' + err);
-					util.sendError(res, 500, 'Error creating uploads directory: ' + err);
+					logger.error(`Error creating ${directory} directory: ${err}`);
+					util.sendError(res, 500, `Error creating ${directory} directory: ${err}`);
 					return;
 				}
 			}
 
 			fs.rename(oldFile, newFile, (err) => {
 				if (err) {
-					logger.error('Error in moving file : ' + err);
-					util.sendError(res, 400, 'Error in moving file : ' + err);
+					logger.error(`Error in moving file : ${err}`);
+					util.sendError(res, 400, `Error in moving file : ${err}`);
 					return;
 				}
 
-				logger.debug('File copied to ' + newFile);
+				logger.debug(`File copied to ${newFile}`);
 
 				// include uploaded file path
 				const output = {
-					filename:'/uploads/' + req.files[0].filename
+					filename:`/${directory}/` + req.files[0].filename
 				}
 
 				util.sendRes(res, 200, 'OK', output);
