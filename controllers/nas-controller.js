@@ -36,7 +36,6 @@ class NasController {
 	}
 
 	get(req, res) {
-		logger.debug('NasController:get 요청됨.')
 		const params = param.parse(req);
 		let directory = 'uploads';
 		if (params.directory) {
@@ -53,7 +52,7 @@ class NasController {
 		try {
 			const fileList = fs.readdirSync(folderPath);
 			if (!fileList.length) {
-				logger.debug('파일 없음');
+				logger.debug('No files found');
 				util.sendRes(res, 200, 'OK', output);
 				return;
 			}
@@ -75,9 +74,9 @@ class NasController {
 			});
 
 			files.sort((a, b) => b.timestamp - a.timestamp);
-			logger.debug('파일 리스트:', files);
+			logger.debug('files length:', files.length);
 		} catch (err) {
-			util.sendError(res, 400, '폴더 읽기 실패 : ' + err);
+			util.sendError(res, 400, `Failed to read folder: ${err}`);
 			return;
 		}
 
@@ -87,7 +86,6 @@ class NasController {
 	}
 
 	delete(req, res) {
-		logger.debug('NasController:delete 요청됨.')
 		const params = param.parse(req);
 		let directory = 'uploads';
 		if (params.directory) {
@@ -107,33 +105,29 @@ class NasController {
 				} else {
 					// 폴더 삭제 (하위 파일 포함)
 					fs.rmSync(filePath, { recursive: true, force: true });
-					console.log('디렉토리와 하위 파일이 모두 삭제되었습니다.');
+					logger.debug('The directory and all its sub-files were deleted');
 				}
-				logger.debug(`파일 삭제 완료: ${params.file}`);
-
-				// 응답 전송
-				util.sendRes(res, 200, 'OK', { message: `파일이 삭제되었습니다. ${params.file}` });
+				const message = `File has been deleted: ${params.file}`;
+				logger.debug(message);
+				util.sendRes(res, 200, 'OK', { message: message });
 			} else {
-				// 파일이 없을 경우 에러 처리
-				logger.error(`파일이 존재하지 않음: ${params.file}`);
-				util.sendError(res, 404, `파일을 찾을 수 없습니다: ${params.file}`);
+				const message = `File not found: ${params.file}`;
+				logger.error(message);
+				util.sendError(res, 404, message);
 			}
 		} catch (err) {
-			logger.error(`파일 삭제 중 오류 발생: ${err}`);
-			util.sendError(res, 500, `파일 삭제 중 오류 발생: ${err}`);
+			const message = `An error occurred while deleting the file: ${err}`;
+			logger.error(message);
+			util.sendError(res, 500, message);
 		}
 	}
 
 	upload(req, res) {
-		logger.debug('NasController:upload 요청됨.')
 		const params = param.parse(req);
 		let directory = 'uploads';
 		if (params.directory) {
 			directory = params.directory
 		}
-
-		logger.debug('FILES');
-		logger.debug(JSON.stringify(req.files));
 
 		if (req.files.length > 0) {
 			const oldFile = __dirname + `/../${directory}/${req.files[0].filename}`;
