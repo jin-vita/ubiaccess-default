@@ -9,27 +9,6 @@ const fs = require('fs');
  * @Controller(path="/nas")
  */
 class NasController {
-
-	getFolderSize = (folderPath) => {
-		let totalSize = 0;
-		const fileList = fs.readdirSync(folderPath);
-
-		fileList.forEach((file) => {
-			const filePath = `${folderPath}/${file}`;
-			const stats = fs.statSync(filePath);
-
-			if (stats.isDirectory()) {
-				// 재귀적으로 하위 폴더 크기 계산
-				totalSize += this.getFolderSize(filePath);
-			} else {
-				// 파일 크기 추가
-				totalSize += stats.size;
-			}
-		});
-
-		return totalSize;
-	}
-
 	get = (req, res) => {
 		const params = param.parse(req);
 		let directory = 'uploads';
@@ -81,6 +60,26 @@ class NasController {
 		output.body = files
 
 		util.sendRes(res, 200, 'OK', output);
+	}
+
+	getFolderSize = (folderPath) => {
+		let totalSize = 0;
+		const fileList = fs.readdirSync(folderPath);
+
+		fileList.forEach((file) => {
+			const filePath = `${folderPath}/${file}`;
+			const stats = fs.statSync(filePath);
+
+			if (stats.isDirectory()) {
+				// 재귀적으로 하위 폴더 크기 계산
+				totalSize += this.getFolderSize(filePath);
+			} else {
+				// 파일 크기 추가
+				totalSize += stats.size;
+			}
+		});
+
+		return totalSize;
 	}
 
 	delete(req, res) {
