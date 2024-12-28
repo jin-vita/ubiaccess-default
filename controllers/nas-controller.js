@@ -9,10 +9,11 @@ const fs = require('fs');
  * @Controller(path="/nas")
  */
 class NasController {
-	getFolderSize(folderPath) {
-		let totalSize = 0;
 
+	getFolderSize = (folderPath) => {
+		let totalSize = 0;
 		const fileList = fs.readdirSync(folderPath);
+
 		fileList.forEach((file) => {
 			const filePath = `${folderPath}/${file}`;
 			const stats = fs.statSync(filePath);
@@ -29,15 +30,15 @@ class NasController {
 		return totalSize;
 	}
 
-	get(req, res) {
+	get = (req, res) => {
 		const params = param.parse(req);
 		let directory = 'uploads';
+
 		if (params.directory) {
 			directory = params.directory
 		}
 
 		const folderPath = __dirname + `/../public/${directory}`;
-
 		let files = [];
 		const output = {
 			body: files
@@ -45,20 +46,24 @@ class NasController {
 
 		try {
 			const fileList = fs.readdirSync(folderPath);
+
 			if (!fileList.length) {
 				logger.debug('No files found');
 				util.sendRes(res, 200, 'OK', output);
 				return;
 			}
+
 			files = fileList.map((file) => {
 				const filePath = `${folderPath}/${file}`;
 				const stats = fs.statSync(filePath);
 				let type = 'file';
 				let size = stats.size;
+
 				if (stats.isDirectory()) {
 					type = 'folder';
 					size = this.getFolderSize(filePath);
 				}
+
 				return {
 					name: file,
 					size: size,
@@ -66,9 +71,8 @@ class NasController {
 					timestamp: stats.birthtimeMs,
 				};
 			});
-
-			files.sort((a, b) => b.timestamp - a.timestamp);
 			logger.debug('files length:', files.length);
+			files.sort((a, b) => b.timestamp - a.timestamp);
 		} catch (err) {
 			util.sendError(res, 400, `Failed to read folder: ${err}`);
 			return;
@@ -82,6 +86,7 @@ class NasController {
 	delete(req, res) {
 		const params = param.parse(req);
 		let directory = 'uploads';
+
 		if (params.directory) {
 			directory = params.directory
 		}
@@ -93,6 +98,7 @@ class NasController {
 			// 파일 존재 여부 확인
 			if (fs.existsSync(filePath)) {
 				const stats = fs.statSync(filePath);
+
 				if (stats.isFile()) {
 					// 파일 삭제
 					fs.unlinkSync(filePath);
@@ -119,6 +125,7 @@ class NasController {
 	upload(req, res) {
 		const params = param.parse(req);
 		let directory = 'uploads';
+
 		if (params.directory) {
 			directory = params.directory
 		}
@@ -149,7 +156,6 @@ class NasController {
 				}
 
 				logger.debug(`File copied to ${newFile}`);
-
 				// include uploaded file path
 				const output = {
 					filename:`/${directory}/` + req.files[0].filename
@@ -159,7 +165,6 @@ class NasController {
 			})
 		}
 	}
-  
 }
 
 module.exports = NasController;
