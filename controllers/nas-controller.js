@@ -1,6 +1,5 @@
 'use strict';
- 
-const Database = require('../database/database_mysql');
+
 const util = require('../util/util');
 const param = require('../util/param');
 const logger = require('../util/logger');
@@ -10,11 +9,6 @@ const fs = require('fs');
  * @Controller(path="/nas")
  */
 class NasController {
-
-    constructor() {
-		this.database = new Database('database_mysql');
-    }
-
 	getFolderSize(folderPath) {
 		let totalSize = 0;
 
