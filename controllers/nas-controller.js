@@ -129,23 +129,23 @@ class NasController {
 			directory = params.directory
 		}
 
-		if (req.files.length > 0) {
-			const oldFile = __dirname + `/../${directory}/${req.files[0].filename}`;
-			const newFileDir = __dirname + `/../public/${directory}/`;
-			const newFile = newFileDir + req.files[0].filename;
-
-			// Ensure the [directory] directory exists
-			if (!fs.existsSync(newFileDir)) {
-				try {
-					// recursive: true 로 하위 폴더도 생성 가능
-					fs.mkdirSync(newFileDir, { recursive: true });
-					logger.debug(`${directory} directory created at: ${newFileDir}`);
-				} catch (err) {
-					logger.error(`Error creating ${directory} directory: ${err}`);
-					util.sendError(res, 500, `Error creating ${directory} directory: ${err}`);
-					return;
-				}
+		const newFileDir = __dirname + `/../public/${directory}/`;
+		// Ensure the [directory] directory exists
+		if (!fs.existsSync(newFileDir)) {
+			try {
+				// recursive: true 로 하위 폴더도 생성 가능
+				fs.mkdirSync(newFileDir, { recursive: true });
+				logger.debug(`${directory} directory created at: ${newFileDir}`);
+			} catch (err) {
+				logger.error(`Error creating ${directory} directory: ${err}`);
+				util.sendError(res, 500, `Error creating ${directory} directory: ${err}`);
+				return;
 			}
+		}
+
+		if (req.files && req.files.length > 0) {
+			const oldFile = __dirname + `/../${directory}/${req.files[0].filename}`;
+			const newFile = newFileDir + req.files[0].filename;
 
 			fs.rename(oldFile, newFile, (err) => {
 				if (err) {
@@ -162,6 +162,11 @@ class NasController {
 
 				util.sendRes(res, 200, 'OK', output);
 			})
+		} else {
+			const output = {
+				folderName:`/${directory}/`
+			}
+			util.sendRes(res, 200, 'OK', output);
 		}
 	}
 }
