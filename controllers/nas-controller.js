@@ -11,7 +11,7 @@ const fs = require('fs');
 class NasController {
 	get = (req, res) => {
 		const params = param.parse(req);
-		let directory = 'uploads';
+		let directory = 'root';
 
 		if (params.directory) {
 			directory = params.directory
@@ -21,6 +21,19 @@ class NasController {
 		let files = [];
 		const output = {
 			body: files
+		}
+
+		// Ensure the [directory] directory exists
+		if (!fs.existsSync(folderPath)) {
+			try {
+				// recursive: true 로 하위 폴더도 생성 가능
+				fs.mkdirSync(folderPath, { recursive: true });
+				logger.debug(`${directory} directory created at: ${folderPath}`);
+			} catch (err) {
+				logger.error(`Error creating ${directory} directory: ${err}`);
+				util.sendError(res, 500, `Error creating ${directory} directory: ${err}`);
+				return;
+			}
 		}
 
 		try {
@@ -51,7 +64,14 @@ class NasController {
 				};
 			});
 			logger.debug('files length:', files.length);
-			files.sort((a, b) => b.timestamp - a.timestamp);
+			files.sort((a, b) => {
+				// 1. 타입 우선 정렬 (folder가 앞에 오도록)
+				if (a.type === 'folder' && b.type === 'file') return -1;
+				if (a.type === 'file' && b.type === 'folder') return 1;
+
+				// 2. 타입이 같으면 timestamp로 정렬 (내림차순)
+				return b.timestamp - a.timestamp;
+			});
 		} catch (err) {
 			util.sendError(res, 400, `Failed to read folder: ${err}`);
 			return;
@@ -84,7 +104,7 @@ class NasController {
 
 	delete(req, res) {
 		const params = param.parse(req);
-		let directory = 'uploads';
+		let directory = 'root';
 
 		if (params.directory) {
 			directory = params.directory
@@ -123,7 +143,7 @@ class NasController {
 
 	upload(req, res) {
 		const params = param.parse(req);
-		let directory = 'uploads';
+		let directory = 'root';
 
 		if (params.directory) {
 			directory = params.directory
