@@ -130,6 +130,7 @@ class NasController {
 		}
 
 		const newFileDir = __dirname + `/../public/${directory}/`;
+
 		// Ensure the [directory] directory exists
 		if (!fs.existsSync(newFileDir)) {
 			try {
