@@ -121,12 +121,18 @@ class NasController {
 				if (stats.isFile()) {
 					// 파일 삭제
 					fs.unlinkSync(filePath);
-				} else {
-					// 폴더 삭제 (하위 파일 포함)
-					fs.rmSync(filePath, { recursive: true, force: true });
-					logger.debug('The directory and all its sub-files were deleted');
+
+					const message = `File has been deleted: ${params.file}`;
+					logger.debug(message);
+					util.sendRes(res, 200, 'OK', { message: message });
+					return;
 				}
-				const message = `File has been deleted: ${params.file}`;
+
+				// 폴더 삭제 (하위 파일 포함)
+				fs.rmSync(filePath, { recursive: true, force: true });
+				logger.debug('The directory and all its sub-files were deleted');
+
+				const message = `Folder has been deleted: ${params.file}/`;
 				logger.debug(message);
 				util.sendRes(res, 200, 'OK', { message: message });
 			} else {
