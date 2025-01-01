@@ -17,26 +17,15 @@ class NasController {
 			directory = params.directory
 		}
 
-		const folderPath = __dirname + `/../public/${directory}`;
 		let files = [];
 		const output = {
 			body: files
 		}
 
-		// Ensure the [directory] directory exists
-		if (!fs.existsSync(folderPath)) {
-			try {
-				// recursive: true 로 하위 폴더도 생성 가능
-				fs.mkdirSync(folderPath, { recursive: true });
-				logger.debug(`${directory} directory created at: ${folderPath}`);
-			} catch (err) {
-				logger.error(`Error creating ${directory} directory: ${err}`);
-				util.sendError(res, 500, `Error creating ${directory} directory: ${err}`);
-				return;
-			}
-		}
+		this.checkFolder(directory);
 
 		try {
+			const folderPath = `${__dirname}/../public/${directory}`;
 			const fileList = fs.readdirSync(folderPath);
 
 			if (!fileList.length) {
@@ -102,7 +91,7 @@ class NasController {
 		return totalSize;
 	}
 
-	delete(req, res) {
+	delete = (req, res) => {
 		const params = param.parse(req);
 		let directory = 'root';
 
@@ -110,9 +99,8 @@ class NasController {
 			directory = params.directory
 		}
 
-		const folderPath = __dirname + `/../public/${directory}`;
+		const folderPath = `${__dirname}/../public/${directory}`;
 		const filePath = `${folderPath}/${params.file}`;
-
 		try {
 			// 파일 존재 여부 확인
 			if (fs.existsSync(filePath)) {
@@ -147,7 +135,7 @@ class NasController {
 		}
 	}
 
-	upload(req, res) {
+	upload = (req, res) => {
 		const params = param.parse(req);
 		let directory = 'root';
 
@@ -155,24 +143,11 @@ class NasController {
 			directory = params.directory
 		}
 
-		const newFileDir = __dirname + `/../public/${directory}/`;
-
-		// Ensure the [directory] directory exists
-		if (!fs.existsSync(newFileDir)) {
-			try {
-				// recursive: true 로 하위 폴더도 생성 가능
-				fs.mkdirSync(newFileDir, { recursive: true });
-				logger.debug(`${directory} directory created at: ${newFileDir}`);
-			} catch (err) {
-				logger.error(`Error creating ${directory} directory: ${err}`);
-				util.sendError(res, 500, `Error creating ${directory} directory: ${err}`);
-				return;
-			}
-		}
-
 		if (req.files && req.files.length > 0) {
+			this.checkFolder(directory);
+
 			const oldFile = __dirname + `/../uploads/${req.files[0].filename}`;
-			const newFile = newFileDir + req.files[0].filename;
+			const newFile = `${__dirname}/../public/${directory}/${req.files[0].filename}`;
 
 			fs.rename(oldFile, newFile, (err) => {
 				if (err) {
@@ -190,10 +165,49 @@ class NasController {
 				util.sendRes(res, 200, 'OK', output);
 			})
 		} else {
+			directory = this.checkFolder(directory, true);
+
 			const output = {
 				folderName:`/${directory}/`
 			}
 			util.sendRes(res, 200, 'OK', output);
+		}
+	}
+
+	checkFolder = (directory, forcedCreate = false) => {
+		let newFileDir = `${__dirname}/../public/${directory}/`;
+
+		if (!fs.existsSync(newFileDir)) {
+			try {
+				fs.mkdirSync(newFileDir, { recursive: true });
+				logger.debug(`${directory} directory created at: ${newFileDir}`);
+				if (forcedCreate) {
+					return directory;
+				}
+			} catch (err) {
+				logger.error(`Error creating ${directory} directory: ${err}`);
+				util.sendError(res, 500, `Error creating ${directory} directory: ${err}`);
+			}
+		} else if (forcedCreate) {
+			// 'directory' 폴더가 이미 존재하는 경우 숫자를 붙여 새로운 이름으로 생성
+			let counter = 2;
+			let uniqueDir = `${directory} (${counter})`;
+			newFileDir = `${__dirname}/../public/${uniqueDir}/`;
+
+			while (fs.existsSync(newFileDir)) {
+				counter++;
+				uniqueDir = `${directory} (${counter})`;
+				newFileDir = `${__dirname}/../public/${uniqueDir}/`;
+			}
+
+			try {
+				fs.mkdirSync(newFileDir, { recursive: true });
+				logger.debug(`${directory} directory already exists. Created new directory: ${uniqueDir}`);
+				return uniqueDir;
+			} catch (err) {
+				logger.error(`Error creating ${uniqueDir} directory: ${err}`);
+				util.sendError(res, 500, `Error creating ${uniqueDir} directory: ${err}`);
+			}
 		}
 	}
 }
