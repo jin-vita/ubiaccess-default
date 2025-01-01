@@ -165,7 +165,7 @@ class NasController {
 		}
 
 		if (req.files && req.files.length > 0) {
-			const oldFile = __dirname + `/../${directory}/${req.files[0].filename}`;
+			const oldFile = __dirname + `/../uploads/${req.files[0].filename}`;
 			const newFile = newFileDir + req.files[0].filename;
 
 			fs.rename(oldFile, newFile, (err) => {
