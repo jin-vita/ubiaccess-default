@@ -7,6 +7,8 @@ const serviceAccount = require("../serviceAccountKey.json");
 fcm.initializeApp({
     credential: fcm.credential.cert(serviceAccount)
 });
+const db = fcm.firestore().collection("expita");
+const { Timestamp } = require('firebase-admin/firestore');
 
 /**
  * @Controller(path="/fcm")
@@ -70,6 +72,30 @@ class FcmController {
 
         const params = param.parse(req);
 
+        const data = [];
+
+        const now = new Date();
+        now.setUTCHours(0, 0, 0, 0); // 시간을 00:00:00으로 설정
+        const todayTimestamp = Timestamp.fromDate(now);
+        const fiveDaysLater = new Timestamp(todayTimestamp.seconds + 5 * 24 * 60 * 60, 0); // 현재 시간 + 5일 (초 단위)
+
+        const snapshot = await db
+            .where('expiryDate', '<=', fiveDaysLater)
+            .get();
+
+        if (snapshot.empty) {
+            console.log('⚠️ 5일 이하로 남은 문서가 없습니다.');
+            util.sendError(res, 400, `No data found.`);
+            return;
+        }
+
+        snapshot.forEach(doc => {
+            console.log(`📌 Document ID: ${doc.id}`, doc.data());
+            data.push(doc.data().name);
+        });
+
+        params.data = data.toString();
+
         try {
             logger.debug(`params: ${JSON.stringify(params)}`);
 
@@ -107,7 +133,7 @@ class FcmController {
                 receiver: params.receiver,
                 receiverType: "web",
                 dataType: "text",
-                title: "fcm test",
+                title: "소비기한 임박 알림",
                 body: params.data
             }
 
