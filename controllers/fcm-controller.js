@@ -133,7 +133,7 @@ class FcmController {
                 receiver: params.receiver,
                 receiverType: "web",
                 dataType: "text",
-                title: "소비기한 임박 알림",
+                title: "소비기한 임박",
                 body: params.data
             }
 
