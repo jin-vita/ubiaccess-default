@@ -133,7 +133,7 @@ const launch = () => {
     let job = schedule.scheduleJob('0 9 * * *', () => {
         doTask();
     });
-    console.log('job scheduled for 매일 00시 00분.');
+    console.log('job scheduled for 매일 09시 00분.');
      
  
     
