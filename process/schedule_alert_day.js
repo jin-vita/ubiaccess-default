@@ -19,9 +19,6 @@ const axios = require('axios');
 
 const config = require('../config/config');
 
-const processConfig = require('./process_config');
-
-
 const https = require('https');
 https.globalAgent.options.rejectUnauthorized = false
 
@@ -46,7 +43,7 @@ class Task {
         try {
 
             webResult = await sendWeb(webParams);
-            if (processConfig.debug) logger.debug(`요청 결과 -> ${JSON.stringify(webResult)}`);
+            logger.debug(`요청 결과 -> ${JSON.stringify(webResult)}`);
 
         } catch(err) {
             logger.error(`웹 요청 시 에러 -> ${err}`, null);
