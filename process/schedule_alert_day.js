@@ -69,8 +69,12 @@ async function sendWeb(params) {
     logger.debug(`sendWeb called.`);
 
     return new Promise(async (resolve, reject) => {
+        let reqProtocol = "http";
+        if (config.server.https) {
+            reqProtocol = "https";
+        }
 
-        let requestUrl = `https://vitas.kro.kr${params.url}`;
+        let requestUrl = `${reqProtocol}://localhost:${config.server.port}${params.url}`;
 
         // params에서 url 속성 제거
         delete params.url;
@@ -83,6 +87,7 @@ async function sendWeb(params) {
         };
 
         //logger.debug('request -> ' + JSON.stringify(requestInfo));
+
 
         // Axios를 이용해 푸시 전송 요청
         try {
