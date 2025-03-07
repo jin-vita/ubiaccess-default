@@ -9,24 +9,15 @@
 
 const moment = require('moment');
 const schedule = require('node-schedule');
-  
 const logger = require('../util/logger');
- 
-const Database = require('../database/database_mysql');
-
-// begin:update 241231
 const axios = require('axios');
-
 const config = require('../config/config');
-
 const https = require('https');
 https.globalAgent.options.rejectUnauthorized = false
 
 
 class Task {
-    constructor() {
-        this.database = new Database('database_mysql')
-    }
+    constructor() {}
 
     async doRequest() {
         logger.info('doRequest called.')
@@ -147,11 +138,11 @@ const launch = () => {
  
     
     // 테스트용 
-    const time = '39';
-    job = schedule.scheduleJob(`${time} * * * *`, () => {
-        doTask();
-    });
-    console.log(`job scheduled for 테스트 : 지정 ${time}분.`);
+    // const time = '39';
+    // job = schedule.scheduleJob(`${time} * * * *`, () => {
+    //     doTask();
+    // });
+    // console.log(`job scheduled for 테스트 : 지정 ${time}분.`);
  
 
 }
