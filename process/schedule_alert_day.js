@@ -1,9 +1,9 @@
 /**
- * 통계 일별
+ * EXPITA ALERT
  * 
- * 매일 00시 00분에 실행됨
+ * 매일 09시 00분에 실행됨
  *
- * @author Mike
+ * @author JIN
  *
  **/
 
