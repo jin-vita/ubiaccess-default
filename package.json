@@ -26,6 +26,7 @@
           "mysql-utilities": "^1.1.0-alpha.6",
           "mysql2": "^3.11.3",
           "network": "^0.5.0",
+          "node-schedule": "^2.1.1",
           "node-uuid": "^1.4.8",
           "passport": "^0.4.1",
           "passport-local": "^1.0.0",
