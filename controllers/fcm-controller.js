@@ -248,7 +248,7 @@ class FcmController {
             util.sendError(res, 400, `Error : ${err}`);
             logger.error(`Error in FcmController:fcmAlert -> ${err}`);
         }
-        util.sendRes(res, 200, "OK", { successCount: users.length });
+        util.sendRes(res, 200, "OK", { successCount: 1 });
     }
 
     /**
