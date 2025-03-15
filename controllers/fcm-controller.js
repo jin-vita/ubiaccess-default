@@ -142,6 +142,9 @@ class FcmController {
             const message = {
                 data: data,
                 tokens: regIds,
+                android: {
+                    priority: 'high',
+                },
             };
 
 
@@ -230,6 +233,9 @@ class FcmController {
             const message = {
                 data: data,
                 tokens: regIds,
+                android: {
+                    priority: 'high',
+                },
             };
 
             // 메세지 전송
@@ -316,6 +322,9 @@ class FcmController {
                 const message = {
                     data: data,
                     tokens: regIds,
+                    android: {
+                        priority: 'high',
+                    },
                 };
 
                 // 메세지 전송
